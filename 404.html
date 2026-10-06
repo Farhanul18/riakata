@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halaman Tidak Ditemukan — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F6F1EA">
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+
+  <!-- Font bawaan Riakata -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Inti -->
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+
+  <style>
+    /* Styling khusus halaman 404 biar berada di tengah */
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-block: var(--space-9);
+      min-height: 60vh;
+    }
+    .error-code {
+      font: 800 clamp(6rem, 20vw, 12rem) var(--font-heading);
+      color: var(--color-primary-soft);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+      text-shadow: 4px 4px 0 var(--color-primary);
+    }
+    .error-title {
+      font: 700 var(--text-2xl) var(--font-heading);
+      margin-bottom: var(--space-3);
+    }
+    .error-desc {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+      max-width: 45ch;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sprite Ikon Minimalis -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+</svg>
+
+<!-- ============ HEADER MINIMALIS ============ -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Riakata, ke beranda">
+      <img class="brand__logo" src="/assets/logo/riakata-logo.svg" alt="Riakata" width="190" height="49">
+    </a>
+    <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Buka menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Menu utama">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="/">Beranda</a></li>
+        <li><a class="nav__link" href="/kategori/budaya">Budaya</a></li>
+        <li><a class="nav__link" href="/kategori/tradisi">Tradisi</a></li>
+        <li><a class="nav__link" href="/kategori/seni">Seni</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ KONTEN 404 ============ -->
+<main class="container error-page">
+  <div class="error-code">404</div>
+  <h1 class="error-title">lahhh kok ilang??</h1>
+  <p class="error-desc">sabarr lahh masih belum beress🗿</p>
+  <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center;">
+    <a href="/" class="btn btn--primary">balik dulu</a>
+    <a href="javascript:history.back()" class="btn btn--outline">balikk sendiri</a>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <a class="brand" href="/" aria-label="Riakata, ke beranda">
+      <img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="150" height="38" loading="lazy">
+    </a>
+    <ul class="site-footer__links">
+      <li><a href="/tentang">Tentang Kami</a></li>
+      <li><a href="/pedoman">Pedoman Redaksi</a></li>
+      <li><a href="/kontak">Kontak</a></li>
+    </ul>
+    <p class="site-footer__copy">&copy; 2026 Riakata. Semua hak dilindungi.</p>
+  </div>
+</footer>
+
+<script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>
