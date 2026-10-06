@@ -1,0 +1,58 @@
+/* ==========================================================
+   style.css — tata letak halaman publik (beranda dan halaman daftar)
+   Butuh base.css + components.css.
+   ========================================================== */
+
+.hot-topics { margin-top: var(--space-3); }
+
+/* ---------- Kerangka: konten + sidebar ---------- */
+.page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21.5rem;
+  gap: var(--space-6);
+  align-items: start;
+  padding-top: var(--space-4);
+}
+.page-main { display: grid; gap: var(--space-6); min-width: 0; }
+.page-side { display: grid; gap: var(--space-5); min-width: 0; }
+
+/* ---------- Sorotan: hero + 2 kartu samping ---------- */
+.featured { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: var(--space-5); }
+.featured .hero { min-height: 27rem; }
+.featured__side { display: grid; grid-template-rows: 1fr 1fr; gap: var(--space-5); }
+.featured__side .card--side { height: 100%; }
+.featured__side .card--side .card__media { width: 9rem; }
+.featured__side .card__title { font-size: var(--text-lg); }
+
+/* ---------- Grid artikel terbaru ---------- */
+.latest-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+
+/* ---------- Newsletter: pesan status ---------- */
+.newsletter__status { margin-top: var(--space-2); font-size: var(--text-sm); font-weight: 600; }
+.newsletter__status:empty { display: none; }
+.newsletter__status.is-success { color: var(--color-success); }
+.newsletter__status.is-error { color: var(--color-danger); }
+.newsletter__input[aria-invalid="true"] { border-color: var(--color-danger); }
+
+/* ---------- Responsif ---------- */
+@media (max-width: 1100px) {
+  .page-grid { grid-template-columns: minmax(0, 1fr); }
+  .page-side { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .page-side .panel { grid-column: 1 / -1; }
+}
+@media (max-width: 900px) {
+  .featured { grid-template-columns: minmax(0, 1fr); }
+  .featured .hero { min-height: 22rem; }
+  .featured__side { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+  .latest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .featured__side { grid-template-columns: minmax(0, 1fr); }
+  .page-side { grid-template-columns: minmax(0, 1fr); }
+  .category-strip { gap: var(--space-5); }
+  .site-footer__inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .latest-grid { grid-template-columns: minmax(0, 1fr); }
+  .featured__side .card--side .card__media { width: 6.5rem; }
+}

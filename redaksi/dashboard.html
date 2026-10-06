@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruang Redaksi — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.auth-pending body{visibility:hidden}</style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+</head>
+<body>
+  <main class="container" style="padding-block:var(--space-8);display:grid;gap:var(--space-4);max-width:40rem">
+    <h1>Ruang Redaksi</h1>
+    <p>Halo, <strong data-user-name></strong> (<span data-user-role></span>). Halaman ini sementara, dibuat untuk menguji login dan penjaga akses.</p>
+    <div><button class="btn btn--outline" type="button" data-logout>Keluar</button></div>
+  </main>
+  <script type="module">
+    import { requireRole } from "/assets/js/auth-guard.js";
+    await requireRole(["editor"]);
+  </script>
+</body>
+</html>

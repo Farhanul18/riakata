@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Riakata — Cerita, Budaya, Kita.</title>
+  <meta name="description" content="Riakata adalah ruang cerita untuk budaya Indonesia: budaya, tradisi, seni, gaya hidup, tokoh, dan opini.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Riakata">
+  <meta property="og:title" content="Riakata — Cerita, Budaya, Kita.">
+  <meta property="og:description" content="Ruang cerita untuk budaya Indonesia.">
+  <meta property="og:locale" content="id_ID">
+  <meta name="theme-color" content="#F6F1EA">
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- Sprite ikon: dipakai lewat <use href="#i-nama"> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M9 12.5a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 50 50 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 50 50 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4 4 20"/></symbol>
+  <symbol id="i-budaya" viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l9 5H3z"/></symbol>
+  <symbol id="i-tradisi" viewBox="0 0 24 24"><path d="m2 5 4 6 6-7 6 7 4-6-2 13H4zM5 21h14"/></symbol>
+  <symbol id="i-seni" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 10-10c0 3-2 4-4 4h-2a2 2 0 0 0-1 3.7c.6.8.3 2.3-3 2.3z"/><path d="M7.5 11h.01M10 7h.01M15 7h.01M18 11h.01"/></symbol>
+  <symbol id="i-gaya-hidup" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10zM2 21c0-3 1.9-5.5 6-7"/></symbol>
+  <symbol id="i-tokoh" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-opini" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+</svg>
+
+<a class="skip-link" href="#konten">Lewati ke konten</a>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span class="topbar__tagline">Cerita, Budaya, Kita.</span>
+    <div class="topbar__actions">
+      <form class="search" role="search" action="/cari" method="get">
+        <svg class="icon search__icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <label class="sr-only" for="cari">Cari artikel</label>
+        <input class="search__input" id="cari" name="q" type="search" placeholder="Cari topik, budaya, atau kata kunci...">
+      </form>
+      <a class="icon-btn" href="#" aria-label="Instagram Riakata"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+      <a class="icon-btn" href="#" aria-label="TikTok Riakata"><svg class="icon" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+      <a class="icon-btn" href="#" aria-label="YouTube Riakata"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Riakata, ke beranda">
+      <img class="brand__logo" src="/assets/logo/riakata-logo.svg" alt="Riakata" width="190" height="49">
+      <span class="brand__tagline">Ruang cerita untuk budaya Indonesia.</span>
+    </a>
+    <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Buka menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Menu utama">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="/" aria-current="page">Beranda</a></li>
+        <li><a class="nav__link" href="/kategori/budaya">Budaya</a></li>
+        <li><a class="nav__link" href="/kategori/tradisi">Tradisi</a></li>
+        <li><a class="nav__link" href="/kategori/seni">Seni</a></li>
+        <li><a class="nav__link" href="/kategori/gaya-hidup">Gaya Hidup</a></li>
+        <li><a class="nav__link" href="/kategori/tokoh">Tokoh</a></li>
+        <li><a class="nav__link" href="/kategori/opini">Opini</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Topik Hangat: nanti diisi dari Firestore (settings/site.hotTopics) -->
+  <div class="container hot-topics">
+    <div class="chip-row" id="hot-topics" aria-label="Topik hangat">
+      <span class="chip-row__label">Topik Hangat</span>
+      <a class="chip" href="/tag/batik">#Batik</a>
+      <a class="chip" href="/tag/tari">#Tari</a>
+      <a class="chip" href="/tag/kuliner">#Kuliner</a>
+      <a class="chip" href="/tag/bahasa-daerah">#BahasaDaerah</a>
+      <a class="chip" href="/tag/festival">#Festival</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ KONTEN ============ -->
+<main class="container" id="konten">
+  <div class="page-grid">
+
+    <div class="page-main">
+
+      <!-- Sorotan: hero (headline) + 2 kartu samping -->
+      <section class="featured" aria-label="Sorotan utama">
+        <article class="hero" id="hero">
+          <img class="hero__img" src="https://picsum.photos/seed/riakata-hero/1200/720" alt="Penari tradisional berkostum merah dan emas menghadap candi" width="1200" height="720" fetchpriority="high">
+          <div class="hero__body">
+            <a class="badge badge--light" href="/kategori/budaya">Budaya</a>
+            <h1 class="hero__title"><a href="/artikel/di-balik-gerak-tari">Di Balik Gerak Tari yang Masih Hidup di Tengah Zaman</a></h1>
+            <p class="hero__excerpt">Tari tradisional bukan cuma warisan, tapi juga cara generasi muda menjaga identitasnya.</p>
+            <div class="meta">
+              <span class="meta__item"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>5 menit baca</span>
+              <span class="meta__item"><time datetime="2025-04-12">12 Apr 2025</time></span>
+            </div>
+          </div>
+          <p class="hero__note" aria-hidden="true">Budaya itu hidup, bukan cuma masa lalu</p>
+        </article>
+
+        <div class="featured__side" id="featured-side">
+          <article class="card card--side">
+            <div class="card__media"><img src="https://picsum.photos/seed/riakata-batik/400/500" alt="Tangan mencanting motif batik" width="400" height="500" loading="lazy"></div>
+            <div class="card__body">
+              <a class="badge badge--tradisi" href="/kategori/tradisi">Tradisi</a>
+              <h2 class="card__title"><a href="/artikel/batik-lebih-dari-sekadar-kain">Batik, Lebih dari Sekadar Kain</a></h2>
+              <p class="card__excerpt">Makna, filosofi, dan cerita di balik motif batik yang kini makin digemari Gen Z.</p>
+              <div class="meta"><span class="meta__item"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>4 menit baca</span></div>
+            </div>
+          </article>
+          <article class="card card--side">
+            <div class="card__media"><img src="https://picsum.photos/seed/riakata-warung/400/500" alt="Warung makan legendaris di tengah kota" width="400" height="500" loading="lazy"></div>
+            <div class="card__body">
+              <a class="badge badge--gaya-hidup" href="/kategori/gaya-hidup">Gaya Hidup</a>
+              <h2 class="card__title"><a href="/artikel/warung-legendaris-yang-masih-eksis">Warung Legendaris yang Masih Eksis di Tengah Kota</a></h2>
+              <p class="card__excerpt">Dari rasa, sampai cerita panjang yang bikin warung ini tetap dicari.</p>
+              <div class="meta"><span class="meta__item"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>6 menit baca</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Jelajahi kategori -->
+      <nav class="category-strip" aria-label="Jelajahi kategori">
+        <p class="category-strip__title">Jelajahi<br>Kategori</p>
+        <a class="category-item" href="/kategori/budaya"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-budaya"/></svg></span>Budaya</a>
+        <a class="category-item" href="/kategori/tradisi"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-tradisi"/></svg></span>Tradisi</a>
+        <a class="category-item" href="/kategori/seni"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-seni"/></svg></span>Seni</a>
+        <a class="category-item" href="/kategori/gaya-hidup"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-gaya-hidup"/></svg></span>Gaya Hidup</a>
+        <a class="category-item" href="/kategori/tokoh"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-tokoh"/></svg></span>Tokoh</a>
+        <a class="category-item" href="/kategori/opini"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-opini"/></svg></span>Opini</a>
+      </nav>
+
+      <!-- Artikel terbaru -->
+      <section class="latest" aria-labelledby="judul-terbaru">
+        <div class="section-head">
+          <h2 class="section-title" id="judul-terbaru">Artikel Terbaru</h2>
+          <a class="link-more" href="/terkini">Lihat semua</a>
+        </div>
+        <div class="latest-grid" id="latest-grid">
+          <article class="card">
+            <div class="card__media"><img src="https://picsum.photos/seed/riakata-a1/800/500" alt="Penari muda tampil di panggung daerah" width="800" height="500" loading="lazy"><a class="badge badge--light" href="/kategori/seni">Seni</a></div>
+            <div class="card__body">
+              <h3 class="card__title"><a href="/artikel/generasi-muda-dan-kebangkitan-seni-pertunjukan-daerah">Generasi Muda dan Kebangkitan Seni Pertunjukan Daerah</a></h3>
+              <p class="card__excerpt">Dari panggung kecil hingga viral di media sosial, ini cerita bagaimana anak muda menghidupkan kembali seni pertunjukan daerah.</p>
+              <div class="meta card__meta">
+                <span class="meta__item"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>6 menit baca</span>
+                <span class="meta__item"><time datetime="2025-04-10">10 Apr 2025</time></span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__media"><img src="https://picsum.photos/seed/riakata-a2/800/500" alt="Perempuan memandang kompleks candi tua" width="800" height="500" loading="lazy"><a class="badge badge--light" href="/kategori/budaya">Budaya</a></div>
+            <div class="card__body">
+              <h3 class="card__title"><a href="/artikel/jejak-sejarah-yang-masih-hidup">Jejak Sejarah yang Masih Hidup di Kehidupan Sehari-hari</a></h3>
+              <p class="card__excerpt">Dari nama jalan, bangunan, hingga kebiasaan kecil, sejarah Indonesia ternyata masih hidup di sekitar kita.</p>
+              <div class="meta card__meta">
+                <span class="meta__item"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>5 menit baca</span>
+                <span class="meta__item"><time datetime="2025-04-09">9 Apr 2025</time></span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__media"><img src="https://picsum.photos/seed/riakata-a3/800/500" alt="Tangan memegang ponsel merekam pertunjukan budaya" width="800" height="500" loading="lazy"><a class="badge badge--light" href="/kategori/opini">Opini</a></div>
+            <div class="card__body">
+              <h3 class="card__title"><a href="/artikel/budaya-lokal-dan-media-sosial">Budaya Lokal dan Media Sosial: Dua Dunia yang Bisa Saling Menguatkan</a></h3>
+              <p class="card__excerpt">Platform digital bukan cuma tempat hiburan, tapi juga ruang baru untuk mengenalkan budaya Indonesia ke lebih banyak orang.</p>
+              <div class="meta card__meta">
+                <span class="meta__item"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>7 menit baca</span>
+                <span class="meta__item"><time datetime="2025-04-08">8 Apr 2025</time></span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__media"><img src="https://picsum.photos/seed/riakata-a4/800/500" alt="Sekelompok anak muda berkumpul di tepi pantai saat senja" width="800" height="500" loading="lazy"><a class="badge badge--light" href="/kategori/gaya-hidup">Gaya Hidup</a></div>
+            <div class="card__body">
+              <h3 class="card__title"><a href="/artikel/merayakan-indonesia-lewat-hal-hal-sederhana">Merayakan Indonesia Lewat Hal-Hal Sederhana</a></h3>
+              <p class="card__excerpt">Dari makanan, musik, sampai bahasa, ini cara-cara kecil yang bisa kita lakukan untuk mencintai budaya Indonesia.</p>
+              <div class="meta card__meta">
+                <span class="meta__item"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>5 menit baca</span>
+                <span class="meta__item"><time datetime="2025-04-07">7 Apr 2025</time></span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="page-side" aria-label="Sidebar">
+      <section class="panel" aria-labelledby="judul-populer">
+        <div class="panel__head">
+          <svg class="icon" aria-hidden="true" style="color:var(--color-primary)"><use href="#i-trend"/></svg>
+          <h2 class="panel__title" id="judul-populer">Paling Banyak Dibaca</h2>
+        </div>
+        <ol class="ranked" id="ranked-list">
+          <li class="ranked__item">
+            <div class="ranked__thumb"><img src="https://picsum.photos/seed/riakata-p1/160/160" alt="" width="160" height="160" loading="lazy"></div>
+            <div><h3 class="ranked__title"><a href="/artikel/kenapa-generasi-muda-kembali-tertarik-pada-budaya-lokal">Kenapa Generasi Muda Kembali Tertarik pada Budaya Lokal?</a></h3><div class="meta"><span class="meta__item">8 menit baca</span></div></div>
+          </li>
+          <li class="ranked__item">
+            <div class="ranked__thumb"><img src="https://picsum.photos/seed/riakata-p2/160/160" alt="" width="160" height="160" loading="lazy"></div>
+            <div><h3 class="ranked__title"><a href="/artikel/5-festival-budaya-yang-wajib-dikunjungi">5 Festival Budaya Indonesia yang Wajib Kamu Kunjungi Tahun Ini</a></h3><div class="meta"><span class="meta__item">6 menit baca</span></div></div>
+          </li>
+          <li class="ranked__item">
+            <div class="ranked__thumb"><img src="https://picsum.photos/seed/riakata-p3/160/160" alt="" width="160" height="160" loading="lazy"></div>
+            <div><h3 class="ranked__title"><a href="/artikel/makanan-tradisional-yang-mulai-langka">Makanan Tradisional yang Mulai Langka, Ini Cara Melestarikannya</a></h3><div class="meta"><span class="meta__item">5 menit baca</span></div></div>
+          </li>
+          <li class="ranked__item">
+            <div class="ranked__thumb"><img src="https://picsum.photos/seed/riakata-p4/160/160" alt="" width="160" height="160" loading="lazy"></div>
+            <div><h3 class="ranked__title"><a href="/artikel/bahasa-daerah-di-era-digital">Bahasa Daerah di Era Digital: Antara Pelestarian dan Tantangan</a></h3><div class="meta"><span class="meta__item">7 menit baca</span></div></div>
+          </li>
+          <li class="ranked__item">
+            <div class="ranked__thumb"><img src="https://picsum.photos/seed/riakata-p5/160/160" alt="" width="160" height="160" loading="lazy"></div>
+            <div><h3 class="ranked__title"><a href="/artikel/peran-kreator-muda-mengangkat-budaya">Peran Kreator Muda dalam Mengangkat Budaya Indonesia</a></h3><div class="meta"><span class="meta__item">5 menit baca</span></div></div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="newsletter" aria-labelledby="judul-newsletter">
+        <h2 class="newsletter__title" id="judul-newsletter">Dapatkan cerita menarik langsung di inbox kamu!</h2>
+        <p class="newsletter__text">Berlangganan newsletter Riakata dan jadi yang pertama tahu artikel terbaru.</p>
+        <form class="newsletter__form" id="newsletter-form" novalidate>
+          <label class="sr-only" for="newsletter-email">Alamat email</label>
+          <input class="newsletter__input" id="newsletter-email" name="email" type="email" placeholder="Masukkan email kamu" autocomplete="email" required>
+          <button class="icon-btn icon-btn--solid" type="submit" aria-label="Berlangganan newsletter"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </form>
+        <p class="newsletter__status" id="newsletter-status" role="status" aria-live="polite"></p>
+        <p class="newsletter__hint" aria-hidden="true">Biar nggak ketinggalan!</p>
+      </section>
+
+      <section class="follow" aria-labelledby="judul-ikuti">
+        <h2 class="follow__title" id="judul-ikuti">Ikuti Kami</h2>
+        <div class="follow__icons">
+          <a class="icon-btn" href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a class="icon-btn" href="#" aria-label="TikTok"><svg class="icon" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+          <a class="icon-btn" href="#" aria-label="YouTube"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg></a>
+          <a class="icon-btn" href="#" aria-label="X"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+        </div>
+        <p class="follow__handle">@riakata.id</p>
+      </section>
+    </aside>
+
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <a class="brand" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="150" height="38" loading="lazy"></a>
+    <ul class="site-footer__links">
+      <li><a href="/tentang">Tentang Kami</a></li>
+      <li><a href="/pedoman">Pedoman Redaksi</a></li>
+      <li><a href="/kontak">Kontak</a></li>
+    </ul>
+    <p class="site-footer__copy">&copy; 2026 Riakata. Semua hak dilindungi.</p>
+  </div>
+</footer>
+
+<script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

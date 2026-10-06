@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masuk — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/auth.css">
+</head>
+<body>
+<a class="skip-link" href="#login-form">Lewati ke form masuk</a>
+
+<div class="auth">
+  <aside class="auth__aside">
+    <a class="auth__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="170" height="44"></a>
+    <p class="auth__quote">Setiap cerita dimulai dari satu kata.</p>
+    <p class="auth__aside-note">Ruang kerja jurnalis dan redaktur Riakata.</p>
+  </aside>
+
+  <main class="auth__panel">
+    <div class="auth__card">
+      <div>
+        <h1 class="auth__title">Masuk ke ruang redaksi</h1>
+        <p class="auth__lead">Khusus jurnalis dan redaktur Riakata. Setelah masuk, kamu otomatis diarahkan sesuai peranmu.</p>
+      </div>
+
+      <div id="login-message" role="alert" hidden></div>
+
+      <form class="auth__form" id="login-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="email">Email</label>
+          <input class="input" id="email" name="email" type="email" autocomplete="username" placeholder="nama@email.com" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="password">Kata sandi</label>
+          <div class="password-field">
+            <input class="input" id="password" name="password" type="password" autocomplete="current-password" required>
+            <button class="password-field__toggle" id="toggle-password" type="button" aria-pressed="false" aria-controls="password">Tampilkan</button>
+          </div>
+        </div>
+        <div class="auth__row"><button class="link-btn" id="reset-password" type="button">Lupa kata sandi?</button></div>
+        <button class="btn btn--primary btn--lg btn--block" id="login-submit" type="submit">Masuk</button>
+      </form>
+
+      <div class="auth__foot">
+        <p>Belum punya akun? Akun dibuat oleh redaksi. <a href="/kontak">Hubungi kami</a>.</p>
+        <p><a href="/">Kembali ke beranda</a></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/assets/js/fb-login.js"></script>
+</body>
+</html>

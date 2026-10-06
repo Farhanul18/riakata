@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Styleguide — Riakata (sementara, hapus sebelum rilis)</title>
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <style>
+    /* hanya untuk halaman uji ini */
+    .sg section { margin-top: var(--space-8); }
+    .sg h2 { margin-bottom: var(--space-4); }
+    .sg-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+    .sg-grid { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+    .sg-two { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+    .sw { width: 7.5rem; font-size: var(--text-xs); }
+    .sw i { display: block; height: 3.5rem; border-radius: var(--radius); border: 1px solid var(--color-border); margin-bottom: 4px; }
+    .ph { width: 100%; height: 100%; background: linear-gradient(135deg, #C9A27A, #7C4B34 60%, #3B2A22); }
+    .ph--b { background: linear-gradient(135deg, #8FA36B, #3F5A3A); }
+    .ph--c { background: linear-gradient(135deg, #D9B26A, #9A5A2B); }
+  </style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+<a class="skip-link" href="#konten">Lewati ke konten</a>
+
+<!-- ===== Top bar + header (komponen asli) ===== -->
+<div class="topbar"><div class="container topbar__inner">
+  <span class="topbar__tagline">Cerita, Budaya, Kita.</span>
+  <div class="topbar__actions">
+    <form class="search" role="search" onsubmit="return false">
+      <svg class="icon search__icon"><use href="#i-search"/></svg>
+      <input class="search__input" type="search" placeholder="Cari topik, budaya, atau kata kunci..." aria-label="Cari artikel">
+    </form>
+    <a class="icon-btn" href="#" aria-label="Instagram">IG</a>
+    <a class="icon-btn" href="#" aria-label="TikTok">TT</a>
+  </div>
+</div></div>
+
+<header class="site-header"><div class="container site-header__inner">
+  <a class="brand" href="/" aria-label="Riakata, beranda">
+    <img class="brand__logo" src="/assets/logo/riakata-logo.svg" alt="Riakata" width="190" height="49">
+    <span class="brand__tagline">Ruang cerita untuk budaya Indonesia.</span>
+  </a>
+  <button class="icon-btn nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Buka menu"><svg class="icon"><use href="#i-menu"/></svg></button>
+  <nav class="nav" id="nav" aria-label="Utama"><ul class="nav__list">
+    <li><a class="nav__link" href="#" aria-current="page">Beranda</a></li>
+    <li><a class="nav__link" href="#">Budaya</a></li>
+    <li><a class="nav__link" href="#">Tradisi</a></li>
+    <li><a class="nav__link" href="#">Seni</a></li>
+    <li><a class="nav__link" href="#">Gaya Hidup</a></li>
+    <li><a class="nav__link" href="#">Tokoh</a></li>
+    <li><a class="nav__link" href="#">Opini</a></li>
+  </ul></nav>
+</div></header>
+
+<main class="container sg" id="konten">
+  <h1>Styleguide Riakata</h1>
+  <p class="text-muted">Halaman uji komponen tahap 1. Hapus file ini sebelum rilis.</p>
+
+  <section>
+    <h2>Warna</h2>
+    <div class="sg-row">
+      <div class="sw"><i style="background:var(--color-bg)"></i>bg</div>
+      <div class="sw"><i style="background:var(--color-surface)"></i>surface</div>
+      <div class="sw"><i style="background:var(--color-primary)"></i>primary</div>
+      <div class="sw"><i style="background:var(--color-primary-dark)"></i>primary-dark</div>
+      <div class="sw"><i style="background:var(--color-olive)"></i>olive</div>
+      <div class="sw"><i style="background:var(--color-green-dark)"></i>green-dark</div>
+      <div class="sw"><i style="background:var(--color-blush)"></i>blush</div>
+      <div class="sw"><i style="background:var(--color-footer)"></i>footer</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tipografi</h2>
+    <h1>Di Balik Gerak Tari yang Masih Hidup</h1>
+    <h2>Judul level dua untuk seksi</h2>
+    <h3>Judul level tiga</h3>
+    <p style="max-width:62ch">Teks isi memakai Plus Jakarta Sans. Tari tradisional bukan cuma warisan, tapi juga cara generasi muda menjaga identitasnya. <a href="#">Tautan contoh</a>.</p>
+    <p class="script" style="font-size:1.75rem">Budaya itu hidup, bukan cuma masa lalu</p>
+  </section>
+
+  <section>
+    <h2>Tombol, badge, chip</h2>
+    <div class="sg-row">
+      <a class="btn btn--primary" href="#">Kirim ke redaksi</a>
+      <a class="btn btn--outline" href="#">Simpan draft</a>
+      <a class="btn btn--ghost" href="#">Batal</a>
+      <a class="btn btn--danger" href="#">Hapus</a>
+      <a class="btn btn--primary btn--sm" href="#">Kecil</a>
+      <a class="btn btn--primary" aria-disabled="true" href="#">Nonaktif</a>
+      <button class="icon-btn icon-btn--solid" aria-label="Kirim"><svg class="icon"><use href="#i-arrow"/></svg></button>
+    </div>
+    <div class="sg-row" style="margin-top:var(--space-4)">
+      <span class="badge badge--budaya">Budaya</span><span class="badge badge--tradisi">Tradisi</span>
+      <span class="badge badge--seni">Seni</span><span class="badge badge--gaya-hidup">Gaya Hidup</span>
+      <span class="badge badge--tokoh">Tokoh</span><span class="badge badge--opini">Opini</span>
+      <span class="badge badge--light">Light</span>
+    </div>
+    <div class="sg-row" style="margin-top:var(--space-4)">
+      <span class="status">Draft</span><span class="status status--submitted">Diajukan</span><span class="status status--in-review">Direview</span>
+      <span class="status status--needs-revision">Perlu revisi</span><span class="status status--approved">Disetujui</span>
+      <span class="status status--published">Terbit</span><span class="status status--rejected">Ditolak</span>
+    </div>
+    <div class="chip-row" style="margin-top:var(--space-3)">
+      <span class="chip-row__label">Topik Hangat</span>
+      <a class="chip chip--active" href="#">#Batik</a><a class="chip" href="#">#Wayang</a><a class="chip" href="#">#Kuliner</a><a class="chip" href="#">#Bahasa Daerah</a><a class="chip" href="#">#Festival</a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Hero</h2>
+    <article class="hero">
+      <div class="hero__img ph"></div>
+      <div class="hero__body">
+        <a class="badge badge--light" href="#">Budaya</a>
+        <h3 class="hero__title"><a href="#">Di Balik Gerak Tari yang Masih Hidup di Tengah Zaman</a></h3>
+        <p class="hero__excerpt">Tari tradisional bukan cuma warisan, tapi juga cara generasi muda menjaga identitasnya.</p>
+        <div class="meta"><span class="meta__item"><svg class="icon"><use href="#i-clock"/></svg>5 menit baca</span><span class="meta__item">12 Apr 2025</span></div>
+      </div>
+      <p class="hero__note">Budaya itu hidup, bukan cuma masa lalu</p>
+    </article>
+  </section>
+
+  <section>
+    <div class="section-head"><h2 class="section-title">Kartu artikel</h2><a class="link-more" href="#">Lihat semua</a></div>
+    <div class="sg-grid">
+      <article class="card">
+        <div class="card__media"><div class="ph ph--b"></div><a class="badge badge--light" href="#">Seni</a></div>
+        <div class="card__body">
+          <h3 class="card__title"><a href="#">Generasi Muda dan Kebangkitan Seni Pertunjukan Daerah</a></h3>
+          <p class="card__excerpt">Dari panggung kecil hingga viral di media sosial, ini cerita bagaimana anak muda menghidupkan kembali seni pertunjukan daerah.</p>
+          <div class="meta card__meta"><span class="meta__item"><svg class="icon"><use href="#i-clock"/></svg>6 menit baca</span><span class="meta__item">10 Apr 2025</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__media"><div class="ph ph--c"></div><a class="badge badge--light" href="#">Opini</a></div>
+        <div class="card__body">
+          <h3 class="card__title"><a href="#">Budaya Lokal dan Media Sosial: Dua Dunia yang Bisa Saling Menguatkan</a></h3>
+          <p class="card__excerpt">Platform digital bukan cuma tempat hiburan, tapi juga ruang baru untuk mengenalkan budaya Indonesia ke lebih banyak orang.</p>
+          <div class="meta card__meta"><span class="meta__item"><svg class="icon"><use href="#i-clock"/></svg>7 menit baca</span><span class="meta__item">8 Apr 2025</span></div>
+        </div>
+      </article>
+      <article class="card card--side">
+        <div class="card__media"><div class="ph"></div></div>
+        <div class="card__body">
+          <a class="badge badge--tradisi" href="#">Tradisi</a>
+          <h3 class="card__title"><a href="#">Batik, Lebih dari Sekadar Kain</a></h3>
+          <div class="meta"><span class="meta__item"><svg class="icon"><use href="#i-clock"/></svg>4 menit baca</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sg-two">
+    <div>
+      <div class="category-strip">
+        <p class="category-strip__title">Jelajahi<br>Kategori</p>
+        <a class="category-item" href="#"><span class="category-item__icon">B</span>Budaya</a>
+        <a class="category-item" href="#"><span class="category-item__icon">T</span>Tradisi</a>
+        <a class="category-item" href="#"><span class="category-item__icon">S</span>Seni</a>
+        <a class="category-item" href="#"><span class="category-item__icon">G</span>Gaya Hidup</a>
+      </div>
+      <div class="panel" style="margin-top:var(--space-5)">
+        <div class="panel__head"><h3 class="panel__title">Paling Banyak Dibaca</h3></div>
+        <ol class="ranked">
+          <li class="ranked__item"><div class="ranked__thumb"><div class="ph"></div></div><div><h4 class="ranked__title"><a href="#">Kenapa Generasi Muda Kembali Tertarik pada Budaya Lokal?</a></h4><div class="meta"><span class="meta__item">8 menit baca</span></div></div></li>
+          <li class="ranked__item"><div class="ranked__thumb"><div class="ph ph--b"></div></div><div><h4 class="ranked__title"><a href="#">5 Festival Budaya Indonesia yang Wajib Kamu Kunjungi Tahun Ini</a></h4><div class="meta"><span class="meta__item">6 menit baca</span></div></div></li>
+          <li class="ranked__item"><div class="ranked__thumb"><div class="ph ph--c"></div></div><div><h4 class="ranked__title"><a href="#">Makanan Tradisional yang Mulai Langka</a></h4><div class="meta"><span class="meta__item">5 menit baca</span></div></div></li>
+        </ol>
+      </div>
+    </div>
+    <div style="display:grid;gap:var(--space-5);align-content:start">
+      <div class="newsletter">
+        <p class="newsletter__title">Dapatkan cerita menarik langsung di inbox kamu!</p>
+        <p class="newsletter__text">Berlangganan newsletter Riakata dan jadi yang pertama tahu artikel terbaru.</p>
+        <form class="newsletter__form" onsubmit="return false">
+          <label class="sr-only" for="nl">Email</label>
+          <input class="newsletter__input" id="nl" type="email" placeholder="Masukkan email kamu">
+          <button class="icon-btn icon-btn--solid" aria-label="Berlangganan"><svg class="icon"><use href="#i-arrow"/></svg></button>
+        </form>
+        <p class="newsletter__hint">Biar nggak ketinggalan!</p>
+      </div>
+      <div class="follow">
+        <p class="follow__title">Ikuti Kami</p>
+        <div class="follow__icons"><a class="icon-btn" href="#" aria-label="Instagram">IG</a><a class="icon-btn" href="#" aria-label="TikTok">TT</a><a class="icon-btn" href="#" aria-label="YouTube">YT</a><a class="icon-btn" href="#" aria-label="X">X</a></div>
+        <p class="follow__handle">@riakata.id</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-two">
+    <form onsubmit="return false" style="display:grid;gap:var(--space-4)">
+      <h2>Form</h2>
+      <div class="field"><label class="field__label" for="em">Email</label><input class="input" id="em" type="email" placeholder="nama@email.com"><span class="field__hint">Gunakan email yang didaftarkan redaksi.</span></div>
+      <div class="field"><label class="field__label" for="pw">Kata sandi</label><input class="input" id="pw" type="password" aria-invalid="true"><span class="field__error">Kata sandi salah. Coba lagi.</span></div>
+      <button class="btn btn--primary">Masuk</button>
+    </form>
+    <div style="display:grid;gap:var(--space-3);align-content:start">
+      <h2>Status</h2>
+      <div class="alert alert--success">Artikel berhasil dikirim ke redaksi.</div>
+      <div class="alert alert--error">Gagal mengunggah gambar. Ukuran maksimal 5 MB.</div>
+      <div class="alert alert--info">Artikel kamu sedang direview editor.</div>
+      <div class="skeleton" style="height:1rem;width:80%"></div><div class="skeleton" style="height:1rem;width:55%"></div>
+      <div class="empty"><p class="empty__title">Belum ada artikel</p><p>Mulai tulis artikel pertamamu.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container site-footer__inner">
+  <img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="150" height="38">
+  <ul class="site-footer__links"><li><a href="#">Tentang Kami</a></li><li><a href="#">Pedoman Redaksi</a></li><li><a href="#">Kontak</a></li></ul>
+  <p class="site-footer__copy">&copy; 2025 Riakata. Semua hak dilindungi.</p>
+</div></footer>
+
+<script>
+  // Menu mobile (nanti dipindah ke main.js)
+  const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
+  t.addEventListener('click', () => { const o = n.classList.toggle('is-open'); t.setAttribute('aria-expanded', o); });
+</script>
+</body>
+</html>
