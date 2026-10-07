@@ -2,7 +2,15 @@
    main.js — perilaku umum untuk semua halaman publik
    1) menu mobile  2) penanda menu aktif  3) validasi pencarian
    4) form newsletter (sementara belum tersambung ke Firestore)
+   0) saat dibuka lokal: ubah tautan cantik jadi tautan berkas
    ========================================================== */
+import { IS_LOCAL, href } from "./utils.js";
+
+/* ---------- 0) Tautan cantik -> berkas (hanya saat lokal) ---------- */
+if (IS_LOCAL) {
+  document.querySelectorAll('a[href^="/"]').forEach((a) => a.setAttribute("href", href(a.getAttribute("href"))));
+  document.querySelectorAll('form[action^="/"]').forEach((f) => f.setAttribute("action", href(f.getAttribute("action"))));
+}
 
 /* ---------- 1) Menu mobile ---------- */
 const navToggle = document.querySelector('.nav-toggle');
@@ -36,20 +44,17 @@ if (nav && navToggle) {
 
 /* ---------- 2) Tandai menu aktif sesuai alamat halaman ---------- */
 (function markActiveNav() {
-  const links = document.querySelectorAll('.nav__link');
-  if (!links.length) return;
-  const here = location.pathname.replace(/\/+$/, '') || '/';
-  // Beranda juga bisa dibuka lewat /index.html
-  const current = here === '/index.html' ? '/' : here;
-  let found = false;
+  const links = document.querySelectorAll(".nav__link");
+  // Bandingkan alamat + query, supaya /kategori.html?k=budaya dan ?k=seni tidak tertukar
+  const norm = (u) => {
+    let path = u.pathname.replace(/\/+$/, "") || "/";
+    if (path === "/index.html") path = "/";
+    return path + u.search;
+  };
+  const here = norm(location);
   links.forEach((a) => {
-    const target = new URL(a.href, location.origin).pathname.replace(/\/+$/, '') || '/';
-    if (target === current) { a.setAttribute('aria-current', 'page'); found = true; }
-  });
-  // Kalau ada yang cocok, hapus penanda dari yang lain
-  if (found) links.forEach((a) => {
-    const target = new URL(a.href, location.origin).pathname.replace(/\/+$/, '') || '/';
-    if (target !== current) a.removeAttribute('aria-current');
+    if (norm(new URL(a.href, location.origin)) === here) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
   });
 })();
 

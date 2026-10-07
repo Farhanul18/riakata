@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tulis Artikel — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.auth-pending body{visibility:hidden}</style>
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+</head>
+<body>
+<div class="app">
+  <aside class="app__sidebar">
+    <a class="app__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="140" height="36"></a>
+    <nav class="app__nav" aria-label="Menu jurnalis">
+      <a href="/jurnalis/dashboard.html">Dashboard</a>
+      <a href="/jurnalis/tulis.html" aria-current="page">Tulis Artikel</a>
+      <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
+    </nav>
+    <div class="app__user">
+      <p><span class="app__user-name" data-user-name></span><br><span class="app__user-role" data-user-role></span></p>
+      <button class="btn btn--outline btn--on-dark btn--sm" type="button" data-logout>Keluar</button>
+    </div>
+  </aside>
+
+  <main class="app__main" id="konten">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title" id="page-title">Tulis Artikel</h1>
+        <p class="page-head__sub">Simpan sebagai draft kapan saja. Kirim ke redaksi kalau sudah siap.</p>
+      </div>
+      <a class="btn btn--outline" href="/jurnalis/dashboard.html">Kembali ke dashboard</a>
+    </div>
+
+    <div id="editor-notice" role="status" hidden style="margin-bottom:var(--space-5)"></div>
+
+    <form id="article-form" novalidate>
+      <div class="editor-layout">
+        <div class="editor-main">
+          <div>
+            <label class="sr-only" for="title">Judul artikel</label>
+            <input class="title-input" id="title" type="text" maxlength="120" placeholder="Judul artikel" autocomplete="off">
+            <div class="counter" id="title-counter" aria-hidden="true">0/120</div>
+          </div>
+          <div>
+            <p class="field__label" style="margin-bottom:var(--space-2)">Isi artikel</p>
+            <div id="editor"></div>
+            <p class="field__hint" id="word-info" style="margin-top:var(--space-2)">0 kata</p>
+          </div>
+        </div>
+
+        <div class="editor-side">
+          <div class="box">
+            <h2 class="box__title">Kategori dan tag</h2>
+            <div class="field">
+              <label class="field__label" for="category">Kategori</label>
+              <select class="select" id="category"><option value="">Memuat...</option></select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="tags">Tag</label>
+              <input class="input" id="tags" type="text" placeholder="batik, tari, festival" autocomplete="off">
+              <span class="field__hint">Pisahkan dengan koma, maksimal 8 tag.</span>
+            </div>
+          </div>
+
+          <div class="box">
+            <h2 class="box__title">Ringkasan</h2>
+            <div class="field">
+              <label class="sr-only" for="excerpt">Ringkasan artikel</label>
+              <textarea class="textarea" id="excerpt" maxlength="200" rows="4" placeholder="Satu atau dua kalimat yang menggambarkan isi artikel."></textarea>
+              <div class="counter" id="excerpt-counter" aria-hidden="true">0/200</div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h2 class="box__title">Foto sampul</h2>
+            <label class="cover-picker" id="cover-picker" for="cover-file">
+              <img id="cover-preview" alt="" hidden>
+              <span class="cover-picker__prompt" id="cover-prompt">Klik untuk memilih gambar<br><small>JPG, PNG, atau WebP</small></span>
+              <input class="sr-only" id="cover-file" type="file" accept="image/jpeg,image/png,image/webp">
+            </label>
+            <div class="progress" id="cover-progress" hidden><div class="progress__bar" id="cover-progress-bar"></div></div>
+            <button class="link-btn" type="button" id="cover-remove" hidden>Hapus gambar</button>
+            <input type="hidden" id="cover-url">
+            <div class="field">
+              <label class="field__label" for="cover-alt">Deskripsi gambar (alt text)</label>
+              <input class="input" id="cover-alt" type="text" maxlength="160" autocomplete="off">
+              <span class="field__hint">Jelaskan isi gambar untuk pembaca tunanetra.</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cover-credit">Kredit foto</label>
+              <input class="input" id="cover-credit" type="text" maxlength="120" placeholder="Foto: Nama / sumber" autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert--error form-errors" id="form-errors" role="alert" hidden></div>
+
+      <div class="editor-actions">
+        <div class="editor-actions__status">Status: <span id="status-badge" class="status">Belum disimpan</span></div>
+        <div class="editor-actions__buttons">
+          <button class="btn btn--outline" type="button" id="save-draft">Simpan draft</button>
+          <button class="btn btn--primary" type="button" id="submit-article">Kirim ke redaksi</button>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script type="module" src="/assets/js/fb-jurnalis-tulis.js"></script>
+</body>
+</html>

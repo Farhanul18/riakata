@@ -1,0 +1,33 @@
+/* ==========================================================
+   article.css — halaman baca artikel. Butuh base, components, style.css.
+   ========================================================== */
+.article { min-width: 0; }
+.article__title { margin-top: var(--space-3); font: 800 var(--text-3xl)/1.15 var(--font-heading); overflow-wrap: anywhere; }
+.article__excerpt { margin-top: var(--space-3); color: var(--color-text-muted); font-size: var(--text-lg); }
+.article__byline {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-5); padding-block: var(--space-3);
+  border-block: 1px solid var(--color-border); font-size: var(--text-sm); color: var(--color-text-muted);
+}
+.article__author { color: var(--color-text); font-weight: 700; }
+.article__cover { margin-block: var(--space-5); }
+.article__cover img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius-lg); }
+.article__cover figcaption { margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-xs); }
+
+.prose { font-size: 1.125rem; line-height: 1.85; overflow-wrap: anywhere; }
+.prose > * + * { margin-top: 1.2em; }
+.prose h2, .prose h3 { margin-top: 1.9em; font-family: var(--font-heading); }
+.prose blockquote { padding: 0.2rem 0 0.2rem 1.1rem; border-left: 4px solid var(--color-primary); color: var(--color-text-muted); font-size: 1.2rem; font-style: italic; }
+.prose ul, .prose ol { padding-left: 1.5rem; }
+.prose li + li { margin-top: 0.4em; }
+.prose img { margin-inline: auto; border-radius: var(--radius); }
+.prose a { color: var(--color-primary-dark); text-underline-offset: 3px; }
+.prose a:hover { color: var(--color-primary); }
+
+.article__tags { margin-top: var(--space-6); }
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-top: var(--space-6); padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+.share__label { margin-right: var(--space-2); font: 700 var(--text-sm) var(--font-heading); }
+
+.related { margin-top: var(--space-8); }
+.related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+@media (max-width: 800px) { .related-grid { grid-template-columns: minmax(0, 1fr); } }

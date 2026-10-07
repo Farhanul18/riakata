@@ -1,0 +1,113 @@
+rules_version = '2';
+
+// ==========================================================
+// Riakata — Firestore Security Rules (lengkap, Tahap 5)
+// Tempel di Firebase Console > Firestore Database > Rules, lalu Publish.
+// Peran dibaca dari dokumen users/{uid}.role ("editor" | "journalist").
+// ==========================================================
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- Fungsi bantu ----------
+    function signedIn() { return request.auth != null; }
+    function me() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function hasRole(role) { return signedIn() && me().role == role && me().isActive == true; }
+    function isEditor() { return hasRole('editor'); }
+    function isJournalist() { return hasRole('journalist'); }
+
+    // Kolom yang TIDAK boleh disentuh jurnalis
+    function journalistTouchesProtected() {
+      return request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['isHeadline', 'isEditorPick', 'views', 'publishedAt', 'authorId', 'authorName', 'slug', 'createdAt']);
+    }
+
+    // ---------- Pengguna ----------
+    // Dokumen ini berisi email, jadi TIDAK dibuka untuk publik.
+    // (Profil publik penulis dibuat terpisah di Tahap 7.)
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isEditor());
+      allow update: if isEditor()
+        || (signedIn() && request.auth.uid == uid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'bio', 'photoUrl']));
+      // Pembuatan akun dilakukan lewat Netlify Function (Admin SDK), bukan dari browser.
+    }
+
+    // ---------- Kategori & pengaturan situs ----------
+    match /categories/{id} {
+      allow read: if true;
+      allow write: if isEditor();
+    }
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isEditor();
+    }
+
+    // ---------- Artikel ----------
+    match /articles/{articleId} {
+
+      // Publik hanya melihat yang terbit. Query publik WAJIB memakai where("status", "==", "published").
+      allow read: if resource.data.status == 'published'
+                  || isEditor()
+                  || (isJournalist() && resource.data.authorId == request.auth.uid);
+
+      allow create: if isJournalist()
+        && request.resource.data.authorId == request.auth.uid
+        && request.resource.data.status in ['draft', 'submitted']
+        && request.resource.data.isHeadline == false
+        && request.resource.data.isEditorPick == false
+        && request.resource.data.views == 0
+        && request.resource.data.publishedAt == null
+        && request.resource.data.editorNote == '';
+
+      allow update: if
+        // Editor: bebas mengubah (status, headline, pilihan editor, dst.)
+        isEditor()
+
+        // Jurnalis: hanya artikel sendiri, hanya saat draft / perlu revisi
+        || (isJournalist()
+            && resource.data.authorId == request.auth.uid
+            && resource.data.status in ['draft', 'needs_revision']
+            && (request.resource.data.status in ['draft', 'submitted']
+                || request.resource.data.status == resource.data.status)
+            && !journalistTouchesProtected()
+            && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['editorNote'])
+                || request.resource.data.editorNote == ''))
+
+        // Pembaca (tanpa login): hanya menambah views +1 pada artikel terbit
+        || (resource.data.status == 'published'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views'])
+            && request.resource.data.views == resource.data.views + 1);
+
+      allow delete: if isEditor()
+        || (isJournalist() && resource.data.authorId == request.auth.uid && resource.data.status == 'draft');
+
+      // Riwayat review / revisi
+      match /revisions/{revisionId} {
+        allow read: if isEditor()
+          || (isJournalist() && get(/databases/$(database)/documents/articles/$(articleId)).data.authorId == request.auth.uid);
+        allow create: if (isEditor() && request.resource.data.byUid == request.auth.uid)
+          || (isJournalist() && request.resource.data.byUid == request.auth.uid
+              && getAfter(/databases/$(database)/documents/articles/$(articleId)).data.authorId == request.auth.uid);
+        allow delete: if isEditor();
+      }
+    }
+
+    // ---------- Usulan isu (pitch) — dipakai di Tahap 7 ----------
+    match /issues/{issueId} {
+      allow create: if isJournalist()
+        && request.resource.data.authorId == request.auth.uid
+        && request.resource.data.status == 'submitted';
+      allow read: if isEditor() || (isJournalist() && resource.data.authorId == request.auth.uid);
+      allow update, delete: if isEditor();
+    }
+
+    // ---------- Pelanggan newsletter ----------
+    match /subscribers/{email} {
+      allow create: if request.resource.data.keys().hasOnly(['email', 'createdAt'])
+        && request.resource.data.email == email
+        && request.resource.data.email.size() < 255
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$');
+      allow read, delete: if isEditor();
+    }
+  }
+}

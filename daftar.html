@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terkini — Riakata</title>
+  <meta name="description" content="Daftar artikel Riakata.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Riakata">
+  <meta property="og:title" content="Terkini — Riakata">
+  <meta property="og:description" content="Daftar artikel Riakata.">
+  <meta property="og:locale" content="id_ID">
+  <meta name="theme-color" content="#F6F1EA">
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- Sprite ikon: dipakai lewat <use href="#i-nama"> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M9 12.5a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 50 50 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 50 50 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4 4 20"/></symbol>
+  <symbol id="i-budaya" viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l9 5H3z"/></symbol>
+  <symbol id="i-tradisi" viewBox="0 0 24 24"><path d="m2 5 4 6 6-7 6 7 4-6-2 13H4zM5 21h14"/></symbol>
+  <symbol id="i-seni" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 10-10c0 3-2 4-4 4h-2a2 2 0 0 0-1 3.7c.6.8.3 2.3-3 2.3z"/><path d="M7.5 11h.01M10 7h.01M15 7h.01M18 11h.01"/></symbol>
+  <symbol id="i-gaya-hidup" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10zM2 21c0-3 1.9-5.5 6-7"/></symbol>
+  <symbol id="i-tokoh" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-opini" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></symbol>
+</svg>
+
+<a class="skip-link" href="#konten">Lewati ke konten</a>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span class="topbar__tagline">Cerita, Budaya, Kita.</span>
+    <div class="topbar__actions">
+      <form class="search" role="search" action="/cari" method="get">
+        <svg class="icon search__icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <label class="sr-only" for="cari">Cari artikel</label>
+        <input class="search__input" id="cari" name="q" type="search" placeholder="Cari topik, budaya, atau kata kunci...">
+      </form>
+      <a class="icon-btn" href="#" aria-label="Instagram Riakata"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+      <a class="icon-btn" href="#" aria-label="TikTok Riakata"><svg class="icon" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+      <a class="icon-btn" href="#" aria-label="YouTube Riakata"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Riakata, ke beranda">
+      <img class="brand__logo" src="/assets/logo/riakata-logo.svg" alt="Riakata" width="190" height="49">
+      <span class="brand__tagline">Ruang cerita untuk budaya Indonesia.</span>
+    </a>
+    <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Buka menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Menu utama">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="/">Beranda</a></li>
+        <li><a class="nav__link" href="/kategori/budaya">Budaya</a></li>
+        <li><a class="nav__link" href="/kategori/tradisi">Tradisi</a></li>
+        <li><a class="nav__link" href="/kategori/seni">Seni</a></li>
+        <li><a class="nav__link" href="/kategori/gaya-hidup">Gaya Hidup</a></li>
+        <li><a class="nav__link" href="/kategori/tokoh">Tokoh</a></li>
+        <li><a class="nav__link" href="/kategori/opini">Opini</a></li>
+      </ul>
+    </nav>
+  </div>
+  </header>
+
+<main class="container" id="konten">
+  <header class="page-title">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Beranda</a> <span aria-hidden="true">/</span> <span id="crumb">Terkini</span></nav>
+    <h1 class="page-title__text" id="page-heading">Terkini</h1>
+    <p class="page-title__desc" id="page-desc"></p>
+    <div class="chip-row" id="switcher" aria-label="Jenis daftar"></div>
+  </header>
+  <div class="list-grid" id="list-grid" aria-live="polite">
+    <div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div>
+  </div>
+  <div id="list-status"></div>
+  <div class="load-more"><button class="btn btn--outline" id="load-more" type="button" hidden>Muat lebih banyak</button></div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <a class="brand" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="150" height="38" loading="lazy"></a>
+    <ul class="site-footer__links">
+      <li><a href="/tentang">Tentang Kami</a></li>
+      <li><a href="/pedoman">Pedoman Redaksi</a></li>
+      <li><a href="/kontak">Kontak</a></li>
+    </ul>
+    <p class="site-footer__copy">&copy; 2026 Riakata. Semua hak dilindungi.</p>
+  </div>
+</footer>
+
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/fb-daftar.js"></script>
+</body>
+</html>

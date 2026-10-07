@@ -444,3 +444,69 @@ Tandai `[x]` setelah tahap lolos tes dan sudah di-commit.
 5. Jelaskan singkat cara kerja bagian penting (auth, query, upload) supaya pemilik proyek bisa menjelaskannya saat presentasi.
 6. Di akhir tiap jawaban, berikan **checklist tes** (apa yang harus dicek di browser) dan pesan commit yang disarankan.
 7. Jika ada error, minta: pesan error di Console (F12), file yang bermasalah, dan langkah yang dilakukan sebelum error muncul.
+
+
+Tahap 0: Setup (nggak ada kode halaman)
+
+Folder kosong sesuai struktur
+.gitignore, README.md (kerangka), PROJECT.md (sudah ada)
+Akun/project Firebase, Cloudinary, repo GitHub, Netlify
+
+Tahap 1: Fondasi tampilan
+
+assets/css/base.css
+assets/css/components.css
+assets/logo/ (placeholder) dan assets/images/
+
+Tahap 2: Beranda statis (data dummy)
+
+index.html
+assets/css/style.css
+assets/js/main.js
+
+Tahap 3: Login
+
+firebase-config.js
+utils.js
+login.html + auth.css + fb-login.js
+auth-guard.js
+
+Tahap 4: Jurnalis
+
+cloudinary.js
+dashboard.css
+jurnalis/tulis.html + fb-jurnalis-tulis.js
+jurnalis/dashboard.html + fb-jurnalis-dashboard.js
+
+Tahap 5: Redaksi
+
+redaksi/dashboard.html + fb-redaksi-dashboard.js
+redaksi/review.html + fb-redaksi-review.js
+redaksi/artikel.html + fb-redaksi-artikel.js
+firestore.rules
+
+Tahap 6: Halaman publik terhubung data asli
+
+fb-index.js (beranda jadi dinamis)
+artikel.html + article.css + fb-artikel.js
+kategori.html + fb-kategori.js
+daftar.html + fb-daftar.js
+cari.html + fb-cari.js
+netlify.toml versi dasar (redirect URL cantik, baru kepake di sini)
+
+Tahap 7: Pelengkap
+
+jurnalis/pitch.html + fb-jurnalis-pitch.js
+redaksi/kategori.html + fb-redaksi-kategori.js
+redaksi/pengguna.html + fb-redaksi-pengguna.js + netlify/functions/create-journalist.js + package.json
+redaksi/subscriber.html + fb-redaksi-subscriber.js
+penulis.html + fb-penulis.js
+tim-redaksi.html + fb-tim-redaksi.js
+Halaman statis: tentang, pedoman, kontak, privasi, 404
+
+Tahap 8: Poles
+
+cloudinary-sign.js + .env.example
+rss.js
+robots.txt, sitemap.xml
+og-artikel.js (opsional)

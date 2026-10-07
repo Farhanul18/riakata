@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Riakata — Cerita, Budaya, Kita.</title>
-  <meta name="description" content="Riakata adalah ruang cerita untuk budaya Indonesia: budaya, tradisi, seni, gaya hidup, tokoh, dan opini.">
+  <title>Artikel — Riakata</title>
+  <meta name="description" content="Cerita, Budaya, Kita.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Riakata">
-  <meta property="og:title" content="Riakata — Cerita, Budaya, Kita.">
-  <meta property="og:description" content="Ruang cerita untuk budaya Indonesia.">
+  <meta property="og:title" content="Artikel — Riakata">
+  <meta property="og:description" content="Cerita, Budaya, Kita.">
   <meta property="og:locale" content="id_ID">
   <meta name="theme-color" content="#F6F1EA">
   <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/article.css">
 </head>
 <body>
 
@@ -39,6 +39,7 @@
   <symbol id="i-gaya-hidup" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10zM2 21c0-3 1.9-5.5 6-7"/></symbol>
   <symbol id="i-tokoh" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
   <symbol id="i-opini" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></symbol>
 </svg>
 
 <a class="skip-link" href="#konten">Lewati ke konten</a>
@@ -72,7 +73,7 @@
     </button>
     <nav class="nav" id="nav" aria-label="Menu utama">
       <ul class="nav__list">
-        <li><a class="nav__link" href="/" aria-current="page">Beranda</a></li>
+        <li><a class="nav__link" href="/">Beranda</a></li>
         <li><a class="nav__link" href="/kategori/budaya">Budaya</a></li>
         <li><a class="nav__link" href="/kategori/tradisi">Tradisi</a></li>
         <li><a class="nav__link" href="/kategori/seni">Seni</a></li>
@@ -82,56 +83,21 @@
       </ul>
     </nav>
   </div>
-  <!-- Topik Hangat: diisi fb-index.js dari Firestore (settings/site.hotTopics) -->
-  <div class="container hot-topics" hidden>
-    <div class="chip-row" id="hot-topics" aria-label="Topik hangat"></div>
-  </div>
-</header>
+  </header>
 
-<!-- ============ KONTEN ============ -->
 <main class="container" id="konten">
   <div class="page-grid">
-
-    <div class="page-main">
-
-      <!-- Sorotan: hero (headline) + 2 kartu samping -->
-      <section class="featured" aria-label="Sorotan utama">
-        <article class="hero" id="hero" aria-busy="true"><div class="hero__img skeleton"></div></article>
-
-        <div class="featured__side" id="featured-side" aria-busy="true"><div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div><div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div></div>
-      </section>
-
-      <!-- Jelajahi kategori -->
-      <nav class="category-strip" aria-label="Jelajahi kategori">
-        <p class="category-strip__title">Jelajahi<br>Kategori</p>
-        <a class="category-item" href="/kategori/budaya"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-budaya"/></svg></span>Budaya</a>
-        <a class="category-item" href="/kategori/tradisi"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-tradisi"/></svg></span>Tradisi</a>
-        <a class="category-item" href="/kategori/seni"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-seni"/></svg></span>Seni</a>
-        <a class="category-item" href="/kategori/gaya-hidup"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-gaya-hidup"/></svg></span>Gaya Hidup</a>
-        <a class="category-item" href="/kategori/tokoh"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-tokoh"/></svg></span>Tokoh</a>
-        <a class="category-item" href="/kategori/opini"><span class="category-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-opini"/></svg></span>Opini</a>
-      </nav>
-
-      <!-- Artikel terbaru -->
-      <section class="latest" aria-labelledby="judul-terbaru">
-        <div class="section-head">
-          <h2 class="section-title" id="judul-terbaru">Artikel Terbaru</h2>
-          <a class="link-more" href="/terkini">Lihat semua</a>
-        </div>
-        <div class="latest-grid" id="latest-grid" aria-busy="true"><div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div><div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div><div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div><div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div></div>
-      </section>
-    </div>
-
-    <!-- ============ SIDEBAR ============ -->
+    <article class="article" id="article" aria-live="polite">
+      <div class="skeleton" style="height:1.2rem;width:30%"></div>
+      <div class="skeleton" style="height:3rem;margin-top:1rem"></div>
+      <div class="skeleton" style="height:18rem;margin-top:1.5rem"></div>
+      <div class="skeleton" style="height:8rem;margin-top:1.5rem"></div>
+    </article>
     <aside class="page-side" aria-label="Sidebar">
       <section class="panel" aria-labelledby="judul-populer">
-        <div class="panel__head">
-          <svg class="icon" aria-hidden="true" style="color:var(--color-primary)"><use href="#i-trend"/></svg>
-          <h2 class="panel__title" id="judul-populer">Paling Banyak Dibaca</h2>
-        </div>
-        <ol class="ranked" id="ranked-list" aria-busy="true"><li class="ranked__item"><div class="ranked__thumb skeleton"></div><div class="skeleton" style="height:2rem"></div></li></ol>
+        <div class="panel__head"><svg class="icon" aria-hidden="true" style="color:var(--color-primary)"><use href="#i-trend"/></svg><h2 class="panel__title" id="judul-populer">Paling Banyak Dibaca</h2></div>
+        <ol class="ranked" id="ranked-list"></ol>
       </section>
-
       <section class="newsletter" aria-labelledby="judul-newsletter">
         <h2 class="newsletter__title" id="judul-newsletter">Dapatkan cerita menarik langsung di inbox kamu!</h2>
         <p class="newsletter__text">Berlangganan newsletter Riakata dan jadi yang pertama tahu artikel terbaru.</p>
@@ -141,21 +107,8 @@
           <button class="icon-btn icon-btn--solid" type="submit" aria-label="Berlangganan newsletter"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </form>
         <p class="newsletter__status" id="newsletter-status" role="status" aria-live="polite"></p>
-        <p class="newsletter__hint" aria-hidden="true">Biar nggak ketinggalan!</p>
-      </section>
-
-      <section class="follow" aria-labelledby="judul-ikuti">
-        <h2 class="follow__title" id="judul-ikuti">Ikuti Kami</h2>
-        <div class="follow__icons">
-          <a class="icon-btn" href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-          <a class="icon-btn" href="#" aria-label="TikTok"><svg class="icon" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
-          <a class="icon-btn" href="#" aria-label="YouTube"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg></a>
-          <a class="icon-btn" href="#" aria-label="X"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></a>
-        </div>
-        <p class="follow__handle">@riakata.id</p>
       </section>
     </aside>
-
   </div>
 </main>
 
@@ -173,6 +126,6 @@
 </footer>
 
 <script type="module" src="/assets/js/main.js"></script>
-<script type="module" src="/assets/js/fb-index.js"></script>
+<script type="module" src="/assets/js/fb-artikel.js"></script>
 </body>
 </html>

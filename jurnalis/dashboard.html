@@ -3,22 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ruang Jurnalis — Riakata</title>
+  <title>Dashboard Jurnalis — Riakata</title>
   <meta name="robots" content="noindex, nofollow">
   <style>html.auth-pending body{visibility:hidden}</style>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
 </head>
 <body>
-  <main class="container" style="padding-block:var(--space-8);display:grid;gap:var(--space-4);max-width:40rem">
-    <h1>Ruang Jurnalis</h1>
-    <p>Halo, <strong data-user-name></strong> (<span data-user-role></span>). Halaman ini sementara, dibuat untuk menguji login dan penjaga akses.</p>
-    <div><button class="btn btn--outline" type="button" data-logout>Keluar</button></div>
+<div class="app">
+  <aside class="app__sidebar">
+    <a class="app__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="140" height="36"></a>
+    <nav class="app__nav" aria-label="Menu jurnalis">
+      <a href="/jurnalis/dashboard.html" aria-current="page">Dashboard</a>
+      <a href="/jurnalis/tulis.html">Tulis Artikel</a>
+      <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
+    </nav>
+    <div class="app__user">
+      <p><span class="app__user-name" data-user-name></span><br><span class="app__user-role" data-user-role></span></p>
+      <button class="btn btn--outline btn--on-dark btn--sm" type="button" data-logout>Keluar</button>
+    </div>
+  </aside>
+
+  <main class="app__main" id="konten">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">Artikel Saya</h1>
+        <p class="page-head__sub">Pantau status tulisanmu, dari draft sampai terbit.</p>
+      </div>
+      <a class="btn btn--primary" href="/jurnalis/tulis.html">Tulis Artikel Baru</a>
+    </div>
+
+    <div id="notice" role="status" hidden></div>
+    <div class="stats" id="stats" aria-label="Ringkasan"></div>
+    <div class="tabs" id="tabs" role="group" aria-label="Filter status"></div>
+    <div class="work-list" id="work-list" aria-live="polite">
+      <div class="skeleton" style="height:5rem"></div>
+      <div class="skeleton" style="height:5rem"></div>
+      <div class="skeleton" style="height:5rem"></div>
+    </div>
   </main>
-  <script type="module">
-    import { requireRole } from "/assets/js/auth-guard.js";
-    await requireRole(["journalist"]);
-  </script>
+</div>
+<script type="module" src="/assets/js/fb-jurnalis-dashboard.js"></script>
 </body>
 </html>

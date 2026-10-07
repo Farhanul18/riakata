@@ -9,12 +9,13 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "ISI_API_KEY",
-  authDomain: "ISI_PROJECT_ID.firebaseapp.com",
-  projectId: "ISI_PROJECT_ID",
-  storageBucket: "ISI_PROJECT_ID.appspot.com",
-  messagingSenderId: "ISI_SENDER_ID",
-  appId: "ISI_APP_ID",
+  apiKey: "AIzaSyC1FvGyV-HDBxqdoFeStseySBlXlTDkVCM",
+  authDomain: "riakata-0610.firebaseapp.com",
+  projectId: "riakata-0610",
+  storageBucket: "riakata-0610.firebasestorage.app",
+  messagingSenderId: "151591115415",
+  appId: "1:151591115415:web:57756efa3bf4ee4d6ee7d2",
+  measurementId: "G-LCM6TKETYV"
 };
 
 /** false selama config masih berisi tulisan "ISI_..." */

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard Redaksi — Riakata</title>
+  <title>Semua Artikel — Riakata</title>
   <meta name="robots" content="noindex, nofollow">
   <style>html.auth-pending body{visibility:hidden}</style>
   <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
@@ -19,8 +19,8 @@
   <aside class="app__sidebar">
     <a class="app__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="140" height="36"></a>
     <nav class="app__nav" aria-label="Menu redaksi">
-      <a href="/redaksi/dashboard.html" aria-current="page">Dashboard</a>
-      <a href="/redaksi/artikel.html">Semua Artikel</a>
+      <a href="/redaksi/dashboard.html">Dashboard</a>
+      <a href="/redaksi/artikel.html" aria-current="page">Semua Artikel</a>
       <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
     </nav>
     <div class="app__user">
@@ -32,29 +32,20 @@
   <main class="app__main" id="konten">
     <div class="page-head">
       <div>
-        <h1 class="page-head__title">Dashboard Redaksi</h1>
-        <p class="page-head__sub">Antrean review, artikel siap terbit, dan ringkasan situs.</p>
+        <h1 class="page-head__title">Semua Artikel</h1>
+        <p class="page-head__sub">Kelola artikel masuk, atur Headline dan Pilihan Editor, arsipkan atau hapus.</p>
       </div>
-      <a class="btn btn--outline" href="/redaksi/artikel.html">Kelola semua artikel</a>
     </div>
-    <div class="stats" id="stats" aria-label="Ringkasan"></div>
-
-    <h2 class="section-title" style="margin-bottom:var(--space-4)">Antrean review</h2>
-    <div class="work-list" id="queue-list" aria-live="polite">
-      <div class="skeleton" style="height:5rem"></div><div class="skeleton" style="height:5rem"></div>
+    <div class="toolbar">
+      <label class="sr-only" for="search">Cari judul atau penulis</label>
+      <input class="input" id="search" type="search" placeholder="Cari judul atau penulis...">
     </div>
-
-    <div class="section-gap">
-      <h2 class="section-title" style="margin-bottom:var(--space-4)">Siap terbit</h2>
-      <div class="work-list" id="approved-list"></div>
-    </div>
-
-    <div class="section-gap">
-      <h2 class="section-title" style="margin-bottom:var(--space-4)">Baru diterbitkan</h2>
-      <div class="work-list" id="published-list"></div>
+    <div class="tabs" id="tabs" role="group" aria-label="Filter status"></div>
+    <div class="work-list" id="work-list" aria-live="polite">
+      <div class="skeleton" style="height:5rem"></div><div class="skeleton" style="height:5rem"></div><div class="skeleton" style="height:5rem"></div>
     </div>
   </main>
 </div>
-<script type="module" src="/assets/js/fb-redaksi-dashboard.js"></script>
+<script type="module" src="/assets/js/fb-redaksi-artikel.js"></script>
 </body>
 </html>

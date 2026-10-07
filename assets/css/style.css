@@ -56,3 +56,20 @@
   .latest-grid { grid-template-columns: minmax(0, 1fr); }
   .featured__side .card--side .card__media { width: 6.5rem; }
 }
+
+/* ---------- Tambahan Tahap 6: halaman daftar, kategori, cari ---------- */
+.breadcrumb { margin-bottom: var(--space-3); color: var(--color-text-muted); font-size: var(--text-sm); }
+.breadcrumb a { text-decoration: none; }
+.breadcrumb a:hover { color: var(--color-primary); text-decoration: underline; }
+
+.page-title { padding-block: var(--space-5) var(--space-3); }
+.page-title__text { font: 800 var(--text-3xl)/1.15 var(--font-heading); overflow-wrap: anywhere; }
+.page-title__desc { max-width: 44rem; margin-top: var(--space-2); color: var(--color-text-muted); }
+.page-title .chip-row { margin-top: var(--space-4); flex-wrap: wrap; overflow: visible; }
+.search--wide { width: min(100%, 34rem); margin-top: var(--space-4); }
+
+.list-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
+.load-more { display: flex; justify-content: center; margin-top: var(--space-7); }
+@media (max-width: 1100px) { .list-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 800px) { .list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .list-grid { grid-template-columns: minmax(0, 1fr); } }
