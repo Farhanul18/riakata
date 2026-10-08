@@ -31,3 +31,12 @@
 .related { margin-top: var(--space-8); }
 .related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
 @media (max-width: 800px) { .related-grid { grid-template-columns: minmax(0, 1fr); } }
+
+a.article__author { 
+  text-decoration: none; 
+}
+
+a.article__author:hover { 
+  color: var(--color-primary); 
+  text-decoration: underline; 
+}

@@ -29,9 +29,9 @@ export const FOLDERS = {
 };
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
-const MAX_INPUT_BYTES = 20 * 1024 * 1024; // file mentah dari kamera HP boleh besar
-const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; // yang dikirim ke Cloudinary maksimal 5 MB
-const MAX_DIMENSION = 2000; // sisi terpanjang, piksel
+const MAX_INPUT_BYTES = 20 * 1024 * 1024; 
+const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; 
+const MAX_DIMENSION = 2000; 
 
 function uploadError(code, message) {
   return Object.assign(new Error(message), { code });

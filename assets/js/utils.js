@@ -233,3 +233,12 @@ export function routeParam(queryName, pathPrefix) {
   const value = location.pathname.slice(prefix.length).split("/")[0];
   return value ? decodeURIComponent(value) : null;
 }
+
+export const CATEGORY_DESCRIPTIONS = {
+  budaya: "Cerita tentang budaya Indonesia yang hidup di tengah zaman.",
+  tradisi: "Warisan dan kebiasaan turun-temurun yang masih dijaga.",
+  seni: "Tari, musik, pertunjukan, dan karya seni dari berbagai daerah.",
+  "gaya-hidup": "Makanan, kebiasaan, dan cara hidup yang membentuk keseharian kita.",
+  tokoh: "Orang-orang yang merawat dan memajukan budaya Indonesia.",
+  opini: "Sudut pandang dan gagasan tentang budaya hari ini.",
+};

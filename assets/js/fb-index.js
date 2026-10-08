@@ -9,7 +9,6 @@ import { escapeHtml, slugify } from "./utils.js";
 
 const $ = (id) => document.getElementById(id);
 const heroEl = $("hero");
-const sideEl = $("featured-side");
 const gridEl = $("latest-grid");
 const rankedEl = $("ranked-list");
 const hotWrap = document.querySelector(".hot-topics");
@@ -39,7 +38,6 @@ async function load() {
   if ([headlineR, latestR, popularR].every((r) => r.status === "rejected")) {
     const message = describeError(latestR.reason);
     heroEl.outerHTML = `<div class="featured__error">${errorHtml(message)}</div>`;
-    sideEl.hidden = true;
     gridEl.innerHTML = "";
     rankedEl.innerHTML = "";
     document.querySelector(".featured__error")?.addEventListener("click", (e) => { if (e.target.closest("[data-retry]")) location.reload(); });
@@ -54,25 +52,15 @@ async function load() {
   if (hero) {
     used.add(hero.id);
     heroEl.innerHTML = heroInnerHtml(hero);
+    heroEl.style.gridColumn = "1 / -1";
     if (!hero.coverUrl) heroEl.style.background = "var(--color-green-dark)";
   } else {
     heroEl.outerHTML = `<div class="featured__error">${emptyHtml("Belum ada artikel terbit", "Artikel pertama akan muncul di sini setelah diterbitkan redaksi.")}</div>`;
   }
   done(heroEl);
 
-  // 2) Dua kartu samping: Pilihan Editor dulu, sisanya diisi artikel terbaru
-  const side = (value(picksR)?.items || []).filter((a) => !used.has(a.id)).slice(0, 2);
-  for (const a of latest) {
-    if (side.length >= 2) break;
-    if (!used.has(a.id) && !side.includes(a)) side.push(a);
-  }
-  side.forEach((a) => used.add(a.id));
-  sideEl.innerHTML = side.map(sideCardHtml).join("");
-  if (!side.length) { sideEl.hidden = true; heroEl.style.gridColumn = "1 / -1"; }
-  done(sideEl);
-
   // 3) Grid Artikel Terbaru
-  const grid = latest.filter((a) => !used.has(a.id)).slice(0, 4);
+  const grid = latest.filter((a) => !used.has(a.id)).slice(0, 6);
   gridEl.innerHTML = grid.length ? grid.map(cardHtml).join("") : emptyHtml("Belum ada artikel lainnya");
   gridEl.style.display = grid.length ? "" : "block";
   done(gridEl);

@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Halaman tidak ditemukan — Riakata</title>
-  <meta name="description" content="Halaman yang kamu cari tidak ditemukan.">
+  <title>Penulis — Riakata</title>
+  <meta name="description" content="Profil dan tulisan penulis Riakata.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Riakata">
-  <meta property="og:title" content="Halaman tidak ditemukan — Riakata">
-  <meta property="og:description" content="Halaman yang kamu cari tidak ditemukan.">
+  <meta property="og:title" content="Penulis — Riakata">
+  <meta property="og:description" content="Profil dan tulisan penulis Riakata.">
   <meta property="og:locale" content="id_ID">
   <meta name="theme-color" content="#F6F1EA">
-  <meta name="robots" content="noindex">
   <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,17 +85,21 @@
   </header>
 
 <main class="container" id="konten">
-  <div class="static-page" style="text-align:center;padding-block:var(--space-8)">
-    <p class="script" style="font-size:3rem;color:var(--color-primary)">Oops!</p>
-    <h1 class="page-title__text">Halaman tidak ditemukan</h1>
-    <p class="page-title__desc" style="margin-inline:auto">Alamatnya mungkin salah, atau halaman sudah dipindahkan. Coba cari artikel yang kamu maksud.</p>
-    <form class="search search--wide" style="margin-inline:auto" role="search" action="/cari" method="get">
-      <svg class="icon search__icon" aria-hidden="true"><use href="#i-search"/></svg>
-      <label class="sr-only" for="cari-404">Kata kunci</label>
-      <input class="search__input" id="cari-404" name="q" type="search" placeholder="Cari topik, budaya, atau kata kunci...">
-    </form>
-    <p style="margin-top:var(--space-6)"><a class="btn btn--primary" href="/">Kembali ke beranda</a></p>
+  <header class="author-head">
+    <div id="author-avatar"></div>
+    <div>
+      <p class="breadcrumb" style="margin:0"><a href="/tim-redaksi">Tim Redaksi</a></p>
+      <h1 class="page-title__text" id="author-name">Penulis</h1>
+      <p class="person__role" id="author-position"></p>
+      <p class="author-head__bio" id="author-bio"></p>
+    </div>
+  </header>
+  <h2 class="group-title">Tulisan</h2>
+  <div class="list-grid" id="list-grid" aria-live="polite">
+    <div class="card" aria-hidden="true"><div class="skeleton" style="aspect-ratio:16/10;border-radius:0"></div><div class="card__body"><div class="skeleton" style="height:1.1rem"></div><div class="skeleton" style="height:.8rem"></div></div></div>
   </div>
+  <div id="list-status"></div>
+  <div class="load-more"><button class="btn btn--outline" id="load-more" type="button" hidden>Muat lebih banyak</button></div>
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -115,5 +118,6 @@
 </footer>
 
 <script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/fb-penulis.js"></script>
 </body>
 </html>

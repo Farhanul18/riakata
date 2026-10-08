@@ -510,3 +510,65 @@ cloudinary-sign.js + .env.example
 rss.js
 robots.txt, sitemap.xml
 og-artikel.js (opsional)
+
+Langkah 1: Buat Akun Login di Firebase Auth
+
+(Langkah ini sama untuk Redaksi maupun Jurnalis)
+
+Buka Firebase Console dan masuk ke project Riakata.
+
+Di menu bilah kiri, klik Build > Authentication > tab Users.
+
+Klik tombol Add user.
+
+Masukkan Email dan Password pengguna baru:
+
+Contoh Redaksi: redaksi@riakata.com
+
+Contoh Jurnalis: ahmad.zaki@student.uinsgd.ac.id
+
+Klik Add user.
+
+Cari akun yang baru dibuat pada daftar tabel, lalu sorot kolom User UID (deretan kode acak panjang, misal: a8F9zKl2...).
+
+Salin (Copy) kode User UID tersebut.
+
+Langkah 2: Daftarkan Data & Peran di Firestore
+
+Di menu bilah kiri Firebase Console, klik Firestore Database.
+
+Masuk ke koleksi (collection) users.
+
+Klik tombol + Add document.
+
+PENTING: Pada kolom Document ID, Tempel (Paste) User UID yang tadi disalin dari Langkah 1. (Jangan klik "Auto-ID").
+
+Tambahkan kolom data (fields) sesuai jenis akun di bawah ini:
+
+A. Untuk Akun Redaksi (Editor)
+
+Isi baris data berikut:
+
+Field: email | Type: string | Value: (email yang didaftarkan di Auth)
+
+Field: name | Type: string | Value: Nama Lengkap Editor (contoh: Farhanul)
+
+Field: role | Type: string | Value: editor
+
+Field: isActive | Type: boolean | Value: true
+
+B. Untuk Akun Jurnalis (Journalist)
+
+Isi baris data berikut:
+
+Field: email | Type: string | Value: (email yang didaftarkan di Auth)
+
+Field: name | Type: string | Value: Nama Lengkap Jurnalis
+
+Field: role | Type: string | Value: journalist
+
+Field: isActive | Type: boolean | Value: true
+
+Klik tombol Save.
+
+jurnalonline

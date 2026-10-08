@@ -128,3 +128,13 @@ export function mountArticleList({ listEl, statusEl, moreBtn, fetchPage, emptyTi
   statusEl.addEventListener("click", (e) => { if (e.target.closest("[data-retry]")) { if (firstLoad) listEl.innerHTML = skeletonCards(8); loadMore(); } });
   return () => { listEl.innerHTML = skeletonCards(8); return loadMore(); };
 }
+
+/** Foto profil bulat; kalau belum ada foto, tampil inisial nama. size: "sm" | "md" | "lg" */
+export function avatarHtml(person, size = "md") {
+  const name = person?.name || "?";
+  const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("");
+  const inner = person?.photoUrl
+    ? `<img src="${escapeHtml(cloudinaryUrl(person.photoUrl, "f_auto,q_auto,c_fill,g_face,w_240,h_240"))}" alt="" width="120" height="120" loading="lazy">`
+    : `<span aria-hidden="true">${escapeHtml(initials)}</span>`;
+  return `<div class="avatar avatar--${size}">${inner}</div>`;
+}

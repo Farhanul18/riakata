@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Review Artikel — Riakata</title>
+  <title>Subscriber — Riakata</title>
   <meta name="robots" content="noindex, nofollow">
   <style>html.auth-pending body{visibility:hidden}</style>
   <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
@@ -23,7 +23,7 @@
       <a href="/redaksi/artikel.html">Semua Artikel</a>
       <a href="/redaksi/kategori.html">Kategori dan Topik</a>
       <a href="/redaksi/pengguna.html">Pengguna</a>
-      <a href="/redaksi/subscriber.html">Subscriber</a>
+      <a href="/redaksi/subscriber.html" aria-current="page">Subscriber</a>
       <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
     </nav>
     <div class="app__user">
@@ -35,37 +35,18 @@
   <main class="app__main" id="konten">
     <div class="page-head">
       <div>
-        <h1 class="page-head__title">Review Artikel</h1>
-        <p class="page-head__sub">Baca, beri catatan, lalu putuskan: setujui, minta revisi, tolak, atau terbitkan.</p>
+        <h1 class="page-head__title">Subscriber Newsletter</h1>
+        <p class="page-head__sub" id="sub-count">Memuat...</p>
       </div>
-      <a class="btn btn--outline" href="/redaksi/artikel.html">Kembali ke daftar</a>
+      <div class="action-buttons">
+        <button class="btn btn--outline" type="button" id="copy-btn">Salin semua email</button>
+        <button class="btn btn--primary" type="button" id="csv-btn">Unduh CSV</button>
+      </div>
     </div>
-    <div id="review-notice" role="alert" hidden style="margin-bottom:var(--space-5)"></div>
-
-    <div class="review-layout" id="review-layout">
-      <article class="preview" id="preview" aria-live="polite">
-        <div class="skeleton" style="height:16rem"></div>
-        <div class="skeleton" style="height:2rem;margin-top:1rem;width:70%"></div>
-        <div class="skeleton" style="height:10rem;margin-top:1rem"></div>
-      </article>
-
-      <aside class="review-side" aria-label="Tindakan dan informasi">
-        <section class="box" id="action-box" aria-labelledby="judul-tindakan">
-          <h2 class="box__title" id="judul-tindakan">Keputusan editor</h2>
-          <div id="action-body"></div>
-        </section>
-        <section class="box" aria-labelledby="judul-info">
-          <h2 class="box__title" id="judul-info">Informasi</h2>
-          <dl class="meta-list" id="info"></dl>
-        </section>
-        <section class="box" aria-labelledby="judul-riwayat">
-          <h2 class="box__title" id="judul-riwayat">Riwayat</h2>
-          <ol class="history" id="history"><li class="text-muted">Memuat...</li></ol>
-        </section>
-      </aside>
-    </div>
+    <div class="toolbar"><label class="sr-only" for="search">Cari email</label><input class="input" id="search" type="search" placeholder="Cari email..."></div>
+    <div class="work-list" id="sub-list" aria-live="polite"><div class="skeleton" style="height:3.5rem"></div><div class="skeleton" style="height:3.5rem"></div></div>
   </main>
 </div>
-<script type="module" src="/assets/js/fb-redaksi-review.js"></script>
+<script type="module" src="/assets/js/fb-redaksi-subscriber.js"></script>
 </body>
 </html>

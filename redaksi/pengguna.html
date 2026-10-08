@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengguna — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.auth-pending body{visibility:hidden}</style>
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+</head>
+<body>
+<div class="app">
+  <aside class="app__sidebar">
+    <a class="app__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="140" height="36"></a>
+    <nav class="app__nav" aria-label="Menu redaksi">
+      <a href="/redaksi/dashboard.html">Dashboard</a>
+      <a href="/redaksi/artikel.html">Semua Artikel</a>
+      <a href="/redaksi/kategori.html">Kategori dan Topik</a>
+      <a href="/redaksi/pengguna.html" aria-current="page">Pengguna</a>
+      <a href="/redaksi/subscriber.html">Subscriber</a>
+      <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
+    </nav>
+    <div class="app__user">
+      <p><span class="app__user-name" data-user-name></span><br><span class="app__user-role" data-user-role></span></p>
+      <button class="btn btn--outline btn--on-dark btn--sm" type="button" data-logout>Keluar</button>
+    </div>
+  </aside>
+
+  <main class="app__main" id="konten">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">Pengguna</h1>
+        <p class="page-head__sub">Kelola akun jurnalis dan redaktur, serta profil publik penulis.</p>
+      </div>
+      <div class="action-buttons">
+        <button class="btn btn--outline" type="button" id="sync-btn">Sinkronkan profil publik</button>
+        <button class="btn btn--primary" type="button" id="add-btn">Tambah jurnalis</button>
+      </div>
+    </div>
+    <div class="work-list" id="user-list" aria-live="polite"><div class="skeleton" style="height:4.5rem"></div><div class="skeleton" style="height:4.5rem"></div></div>
+
+    <dialog class="dialog" id="create-dialog" aria-labelledby="create-title">
+      <form class="form-stack" id="create-form" novalidate>
+        <h2 class="dialog__title" id="create-title">Tambah jurnalis</h2>
+        <div class="field"><label class="field__label" for="n-name">Nama lengkap</label><input class="input" id="n-name" type="text" maxlength="80" autocomplete="off"></div>
+        <div class="field"><label class="field__label" for="n-email">Email</label><input class="input" id="n-email" type="email" autocomplete="off"></div>
+        <div class="field"><label class="field__label" for="n-position">Jabatan</label><input class="input" id="n-position" type="text" maxlength="80" value="Jurnalis"></div>
+        <div class="field">
+          <label class="field__label" for="n-password">Kata sandi sementara</label>
+          <div class="password-row"><input class="input" id="n-password" type="text" minlength="8" maxlength="64" autocomplete="off"><button class="btn btn--outline btn--sm" type="button" id="n-generate">Buat otomatis</button></div>
+          <span class="field__hint">Minimal 8 karakter. Berikan ke jurnalis, lalu sarankan menggantinya lewat "Lupa kata sandi".</span>
+        </div>
+        <div class="alert alert--error" id="create-error" role="alert" hidden></div>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" type="button" id="n-cancel">Batal</button>
+          <button class="btn btn--primary" type="submit" id="n-submit">Buat akun</button>
+        </div>
+      </form>
+      <div id="create-done" hidden>
+        <h2 class="dialog__title">Akun berhasil dibuat</h2>
+        <p>Berikan data ini ke jurnalis. Kata sandi hanya ditampilkan sekarang.</p>
+        <p class="secret-box" id="done-box" style="margin-top:var(--space-3)"></p>
+        <div class="dialog__actions"><button class="btn btn--primary" type="button" id="done-close">Selesai</button></div>
+      </div>
+    </dialog>
+
+    <dialog class="dialog" id="edit-dialog" aria-labelledby="edit-title">
+      <form class="form-stack" id="edit-form" novalidate>
+        <h2 class="dialog__title" id="edit-title">Edit profil</h2>
+        <div class="person-row"><div id="e-avatar"></div>
+          <div><label class="btn btn--outline btn--sm" for="e-photo">Ganti foto</label><input class="sr-only" id="e-photo" type="file" accept="image/jpeg,image/png,image/webp"><p class="field__hint" id="e-photo-status"></p></div>
+        </div>
+        <div class="field"><label class="field__label" for="e-name">Nama</label><input class="input" id="e-name" type="text" maxlength="80"></div>
+        <div class="field"><label class="field__label" for="e-position">Jabatan</label><input class="input" id="e-position" type="text" maxlength="80"></div>
+        <div class="field"><label class="field__label" for="e-bio">Bio singkat</label><textarea class="textarea" id="e-bio" rows="4" maxlength="400"></textarea></div>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" type="button" id="e-cancel">Batal</button>
+          <button class="btn btn--primary" type="submit" id="e-submit">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+</div>
+<script type="module" src="/assets/js/fb-redaksi-pengguna.js"></script>
+</body>
+</html>

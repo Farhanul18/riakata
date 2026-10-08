@@ -2,16 +2,17 @@
    fb-redaksi-dashboard.js — ringkasan untuk redaktur
    Memuat artikel sekali (maks 300), lalu menghitung dan memilah di browser.
    ========================================================== */
-import { db, collection, query, limit, getDocs } from "./firebase-config.js";
+import { db, doc, collection, query, where, limit, getDocs, updateDoc, serverTimestamp } from "./firebase-config.js";
 import { requireRole } from "./auth-guard.js";
-import { escapeHtml, timeAgo, STATUS_LABEL, statusClass, categoryName } from "./utils.js";
+import { escapeHtml, timeAgo, formatDate, STATUS_LABEL, statusClass, categoryName, showToast } from "./utils.js";
 
-await requireRole(["editor"]);
+const { user } = await requireRole(["editor"]);
 
 const statsEl = document.getElementById("stats");
 const queueEl = document.getElementById("queue-list");
 const approvedEl = document.getElementById("approved-list");
 const publishedEl = document.getElementById("published-list");
+const issuesEl = document.getElementById("issues-list");
 
 const ms = (v) => v?.toMillis?.() ?? 0;
 
@@ -74,4 +75,67 @@ async function load() {
   }
 }
 
+/* ---------- Usulan isu dari jurnalis ---------- */
+let issues = [];
+
+function issueHtml(i) {
+  return `<article class="work-item">
+    <div>
+      <h3 class="work-item__title">${escapeHtml(i.title)}</h3>
+      <p style="margin-top:var(--space-2);font-size:var(--text-sm)">${escapeHtml(i.summary)}</p>
+      <p class="text-muted" style="margin-top:var(--space-2);font-size:var(--text-xs)"><strong>Mengapa penting:</strong> ${escapeHtml(i.reason)}</p>
+      <div class="work-item__meta">
+        <span>${escapeHtml(i.authorName || "-")}</span>
+        <span>Dikirim ${escapeHtml(timeAgo(i.createdAt) || "baru saja")}</span>
+        ${i.deadline ? `<span>Target ${escapeHtml(formatDate(i.deadline))}</span>` : ""}
+      </div>
+    </div>
+    <span class="status status--submitted">Diajukan</span>
+    <div class="work-item__actions">
+      <button class="btn btn--primary btn--sm" type="button" data-issue="accepted" data-id="${i.id}">Terima</button>
+      <button class="btn btn--outline btn--sm" type="button" data-issue="rejected" data-id="${i.id}">Tolak</button>
+    </div>
+  </article>`;
+}
+
+function renderIssues() {
+  issuesEl.innerHTML = issues.length ? issues.map(issueHtml).join("") : '<div class="empty"><p>Tidak ada usulan isu yang menunggu.</p></div>';
+}
+
+async function loadIssues() {
+  try {
+    const snap = await getDocs(query(collection(db, "issues"), where("status", "==", "submitted"), limit(50)));
+    issues = snap.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => ms(a.createdAt) - ms(b.createdAt));
+    renderIssues();
+  } catch (err) {
+    console.error("[usulan isu]", err);
+    issuesEl.innerHTML = '<div class="alert alert--error">Gagal memuat usulan isu. Periksa Firestore Rules.</div>';
+  }
+}
+
+issuesEl.addEventListener("click", async (e) => {
+  const btn = e.target.closest("[data-issue]");
+  if (!btn) return;
+  const to = btn.dataset.issue;
+  const issue = issues.find((i) => i.id === btn.dataset.id);
+  if (!issue) return;
+
+  const note = window.prompt(to === "accepted" ? "Catatan untuk jurnalis (boleh kosong):" : "Alasan penolakan (wajib diisi):", "");
+  if (note === null) return;
+  if (to === "rejected" && !note.trim()) return showToast("Alasan penolakan wajib diisi.", "error");
+
+  btn.disabled = true;
+  try {
+    await updateDoc(doc(db, "issues", issue.id), { status: to, editorNote: note.trim(), decidedAt: serverTimestamp(), decidedBy: user.uid });
+    issues = issues.filter((i) => i.id !== issue.id);
+    renderIssues();
+    showToast(to === "accepted" ? "Usulan diterima." : "Usulan ditolak.", "success");
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    showToast("Gagal menyimpan keputusan.", "error");
+  }
+});
+
 load();
+loadIssues();

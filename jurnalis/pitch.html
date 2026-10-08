@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usulan Isu — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.auth-pending body{visibility:hidden}</style>
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+</head>
+<body>
+<div class="app">
+  <aside class="app__sidebar">
+    <a class="app__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="140" height="36"></a>
+    <nav class="app__nav" aria-label="Menu jurnalis">
+      <a href="/jurnalis/dashboard.html">Dashboard</a>
+      <a href="/jurnalis/tulis.html">Tulis Artikel</a>
+      <a href="/jurnalis/pitch.html" aria-current="page">Usulan Isu</a>
+      <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
+    </nav>
+    <div class="app__user">
+      <p><span class="app__user-name" data-user-name></span><br><span class="app__user-role" data-user-role></span></p>
+      <button class="btn btn--outline btn--on-dark btn--sm" type="button" data-logout>Keluar</button>
+    </div>
+  </aside>
+
+  <main class="app__main" id="konten">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">Usulan Isu</h1>
+        <p class="page-head__sub">Punya ide liputan? Kirim ke redaksi sebelum mulai menulis.</p>
+      </div>
+    </div>
+    <div class="editor-layout">
+      <div class="editor-main">
+        <h2 class="section-title">Usulan saya</h2>
+        <div class="work-list" id="pitch-list" aria-live="polite">
+          <div class="skeleton" style="height:5rem"></div><div class="skeleton" style="height:5rem"></div>
+        </div>
+      </div>
+      <div class="editor-side">
+        <form class="box" id="pitch-form" novalidate>
+          <h2 class="box__title">Kirim usulan baru</h2>
+          <div class="field"><label class="field__label" for="p-title">Judul isu</label><input class="input" id="p-title" type="text" maxlength="120" autocomplete="off"></div>
+          <div class="field"><label class="field__label" for="p-summary">Ringkasan</label><textarea class="textarea" id="p-summary" rows="4" maxlength="500" placeholder="Apa yang ingin diliput?"></textarea></div>
+          <div class="field"><label class="field__label" for="p-reason">Mengapa penting?</label><textarea class="textarea" id="p-reason" rows="3" maxlength="500" placeholder="Kenapa pembaca perlu tahu sekarang?"></textarea></div>
+          <div class="field"><label class="field__label" for="p-deadline">Target selesai (opsional)</label><input class="input" id="p-deadline" type="date"></div>
+          <div class="alert alert--error" id="pitch-error" role="alert" hidden></div>
+          <button class="btn btn--primary btn--block" type="submit" id="pitch-submit">Kirim usulan</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="module" src="/assets/js/fb-jurnalis-pitch.js"></script>
+</body>
+</html>

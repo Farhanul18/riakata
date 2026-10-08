@@ -15,12 +15,13 @@ const toItem = (d) => ({ id: d.id, ...d.data() });
 
 /**
  * Daftar artikel terbit dengan paginasi.
- * opsi: category, tag, pick (Pilihan Editor), order ("publishedAt" | "views"), pageSize, cursor
+ * opsi: category, authorId, tag, pick (Pilihan Editor), order ("publishedAt" | "views"), pageSize, cursor
  * Mengembalikan { items, cursor, hasMore }. Kirim `cursor` untuk halaman berikutnya.
  */
-export async function fetchPublished({ category, tag, pick = false, order = "publishedAt", pageSize = 12, cursor = null } = {}) {
+export async function fetchPublished({ category, authorId, tag, pick = false, order = "publishedAt", pageSize = 12, cursor = null } = {}) {
   const rules = [where("status", "==", "published")];
   if (category) rules.push(where("category", "==", category));
+  if (authorId) rules.push(where("authorId", "==", authorId));
   if (tag) rules.push(where("tags", "array-contains", tag));
   if (pick) rules.push(where("isEditorPick", "==", true));
   rules.push(orderBy(order, "desc"));

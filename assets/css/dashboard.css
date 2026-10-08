@@ -155,3 +155,16 @@ html.auth-pending body { visibility: hidden; }
 .history li { padding-left: 0.9rem; border-left: 2px solid var(--color-border); }
 .history__note { margin-top: 0.15rem; color: var(--color-text-muted); }
 .action-buttons { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* ---------- Tambahan Tahap 7: dialog, form, baris pengguna ---------- */
+.dialog { width: min(92vw, 32rem); max-height: 90vh; padding: var(--space-6); overflow-y: auto; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-md); }
+.dialog::backdrop { background: rgba(20, 15, 10, 0.45); }
+.dialog__title { margin-bottom: var(--space-4); font: 800 var(--text-xl) var(--font-heading); }
+.dialog__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-5); }
+.form-stack { display: grid; gap: var(--space-4); }
+.person-row { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+.password-row { display: flex; gap: var(--space-2); }
+.password-row .input { flex: 1; min-width: 0; }
+.is-inactive { opacity: 0.6; }
+.secret-box { padding: var(--space-3); border: 1px dashed var(--color-primary); border-radius: var(--radius); background: #fff; font-family: ui-monospace, Consolas, monospace; font-size: var(--text-sm); overflow-wrap: anywhere; }
+ 

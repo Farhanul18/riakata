@@ -6,6 +6,10 @@
 [build]
   publish = "."
 
+# Kode server (butuh package.json di root dan Environment Variables di Netlify)
+[functions]
+  directory = "netlify/functions"
+
 # ---------- URL cantik halaman publik ----------
 [[redirects]]
   from = "/artikel/*"

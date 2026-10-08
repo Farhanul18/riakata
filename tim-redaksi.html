@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Halaman tidak ditemukan — Riakata</title>
-  <meta name="description" content="Halaman yang kamu cari tidak ditemukan.">
+  <title>Tim Redaksi — Riakata</title>
+  <meta name="description" content="Orang-orang di balik Riakata: redaktur dan jurnalis.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Riakata">
-  <meta property="og:title" content="Halaman tidak ditemukan — Riakata">
-  <meta property="og:description" content="Halaman yang kamu cari tidak ditemukan.">
+  <meta property="og:title" content="Tim Redaksi — Riakata">
+  <meta property="og:description" content="Orang-orang di balik Riakata: redaktur dan jurnalis.">
   <meta property="og:locale" content="id_ID">
   <meta name="theme-color" content="#F6F1EA">
-  <meta name="robots" content="noindex">
   <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,17 +85,11 @@
   </header>
 
 <main class="container" id="konten">
-  <div class="static-page" style="text-align:center;padding-block:var(--space-8)">
-    <p class="script" style="font-size:3rem;color:var(--color-primary)">Oops!</p>
-    <h1 class="page-title__text">Halaman tidak ditemukan</h1>
-    <p class="page-title__desc" style="margin-inline:auto">Alamatnya mungkin salah, atau halaman sudah dipindahkan. Coba cari artikel yang kamu maksud.</p>
-    <form class="search search--wide" style="margin-inline:auto" role="search" action="/cari" method="get">
-      <svg class="icon search__icon" aria-hidden="true"><use href="#i-search"/></svg>
-      <label class="sr-only" for="cari-404">Kata kunci</label>
-      <input class="search__input" id="cari-404" name="q" type="search" placeholder="Cari topik, budaya, atau kata kunci...">
-    </form>
-    <p style="margin-top:var(--space-6)"><a class="btn btn--primary" href="/">Kembali ke beranda</a></p>
-  </div>
+  <header class="page-title">
+    <h1 class="page-title__text">Tim Redaksi</h1>
+    <p class="page-title__desc">Orang-orang di balik cerita yang kamu baca di Riakata.</p>
+  </header>
+  <div id="team" aria-live="polite"><div class="people-grid"><div class="skeleton" style="height:12rem"></div><div class="skeleton" style="height:12rem"></div></div></div>
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -115,5 +108,6 @@
 </footer>
 
 <script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/fb-tim-redaksi.js"></script>
 </body>
 </html>

@@ -230,3 +230,10 @@
 @keyframes shimmer { to { background-position: -200% 0; } }
 .empty { padding: var(--space-8) var(--space-4); text-align: center; color: var(--color-text-muted); }
 .empty__title { color: var(--color-text); font: 700 var(--text-lg) var(--font-heading); }
+
+/* ---------- Tambahan Tahap 7: avatar ---------- */
+.avatar { display: grid; flex: none; place-items: center; overflow: hidden; border-radius: 50%; background: var(--color-primary-soft); color: var(--color-primary-dark); font: 800 1rem var(--font-heading); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar--sm { width: 2.5rem; height: 2.5rem; font-size: 0.875rem; }
+.avatar--md { width: 4rem; height: 4rem; font-size: 1.25rem; }
+.avatar--lg { width: 6rem; height: 6rem; font-size: 1.75rem; }

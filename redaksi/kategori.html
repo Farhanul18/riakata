@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kategori dan Topik — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.auth-pending body{visibility:hidden}</style>
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+</head>
+<body>
+<div class="app">
+  <aside class="app__sidebar">
+    <a class="app__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="140" height="36"></a>
+    <nav class="app__nav" aria-label="Menu redaksi">
+      <a href="/redaksi/dashboard.html">Dashboard</a>
+      <a href="/redaksi/artikel.html">Semua Artikel</a>
+      <a href="/redaksi/kategori.html" aria-current="page">Kategori dan Topik</a>
+      <a href="/redaksi/pengguna.html">Pengguna</a>
+      <a href="/redaksi/subscriber.html">Subscriber</a>
+      <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
+    </nav>
+    <div class="app__user">
+      <p><span class="app__user-name" data-user-name></span><br><span class="app__user-role" data-user-role></span></p>
+      <button class="btn btn--outline btn--on-dark btn--sm" type="button" data-logout>Keluar</button>
+    </div>
+  </aside>
+
+  <main class="app__main" id="konten">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">Kategori dan Topik Hangat</h1>
+        <p class="page-head__sub">Atur kategori artikel dan chip Topik Hangat di beranda.</p>
+      </div>
+    </div>
+    <div id="seed-box" class="alert alert--info" style="margin-bottom:var(--space-5)" hidden>
+      Belum ada kategori di database, jadi situs memakai daftar bawaan.
+      <button class="btn btn--primary btn--sm" type="button" id="seed-btn" style="margin-left:var(--space-2)">Isi 6 kategori bawaan</button>
+    </div>
+    <div class="editor-layout">
+      <div class="editor-main">
+        <h2 class="section-title">Kategori</h2>
+        <div class="work-list" id="cat-list" aria-live="polite"><div class="skeleton" style="height:4rem"></div><div class="skeleton" style="height:4rem"></div></div>
+      </div>
+      <div class="editor-side">
+        <form class="box" id="cat-form" novalidate>
+          <h2 class="box__title">Tambah kategori</h2>
+          <div class="field"><label class="field__label" for="c-name">Nama</label><input class="input" id="c-name" type="text" maxlength="30" autocomplete="off"></div>
+          <div class="field"><label class="field__label" for="c-desc">Deskripsi singkat</label><textarea class="textarea" id="c-desc" rows="3" maxlength="160"></textarea></div>
+          <button class="btn btn--primary btn--block" type="submit">Tambah</button>
+        </form>
+        <form class="box" id="hot-form" novalidate>
+          <h2 class="box__title">Topik Hangat</h2>
+          <div class="field">
+            <label class="sr-only" for="h-topics">Daftar topik</label>
+            <input class="input" id="h-topics" type="text" placeholder="batik, tari, kuliner" autocomplete="off">
+            <span class="field__hint">Pisahkan dengan koma, maksimal 8. Tampil sebagai chip di beranda.</span>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit">Simpan topik</button>
+        </form>
+      </div>
+    </div>
+
+    <dialog class="dialog" id="edit-dialog" aria-labelledby="edit-title">
+      <form class="form-stack" id="edit-form" novalidate>
+        <h2 class="dialog__title" id="edit-title">Edit kategori</h2>
+        <div class="field"><label class="field__label" for="e-name">Nama</label><input class="input" id="e-name" type="text" maxlength="30"></div>
+        <div class="field"><label class="field__label" for="e-desc">Deskripsi</label><textarea class="textarea" id="e-desc" rows="3" maxlength="160"></textarea></div>
+        <p class="field__hint">Alamat (slug) <strong id="e-slug"></strong> tidak bisa diubah karena dipakai artikel.</p>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" type="button" id="e-cancel">Batal</button>
+          <button class="btn btn--primary" type="submit">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+</div>
+<script type="module" src="/assets/js/fb-redaksi-kategori.js"></script>
+</body>
+</html>

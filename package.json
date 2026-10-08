@@ -1,0 +1,10 @@
+{
+  "name": "riakata",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Riakata — media online budaya Indonesia",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  }
+}

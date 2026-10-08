@@ -80,11 +80,20 @@ function showNewsletterStatus(message, type) {
   nlStatus.classList.toggle('is-error', type === 'error');
 }
 
-// TODO (Tahap 7): ganti isi fungsi ini dengan penyimpanan ke Firestore
-// (koleksi "subscribers", ID dokumen = email huruf kecil agar tidak dobel).
+// Disimpan di koleksi "subscribers" dengan ID dokumen = email (otomatis tanpa duplikat).
+// Firebase dimuat saat dibutuhkan saja, supaya halaman statis tetap ringan.
 async function subscribeEmail(email) {
-  console.info('[newsletter] belum tersambung ke database:', email);
-  return { ok: true };
+  if (email.includes("/")) return { ok: false };
+  try {
+    const { db, doc, setDoc, serverTimestamp } = await import("./firebase-config.js");
+    await setDoc(doc(db, "subscribers", email), { email, createdAt: serverTimestamp() });
+    return { ok: true };
+  } catch (err) {
+    // Email yang sudah ada dianggap "pembaruan" dan ditolak rules = berarti sudah terdaftar
+    if (err.code === "permission-denied") return { ok: true, already: true };
+    console.error("[newsletter]", err);
+    return { ok: false };
+  }
 }
 
 if (nlForm && nlInput && nlStatus) {
@@ -105,7 +114,7 @@ if (nlForm && nlInput && nlStatus) {
     try {
       const result = await subscribeEmail(email);
       if (!result.ok) throw new Error('gagal');
-      showNewsletterStatus('Terima kasih! Kamu sudah terdaftar.', 'success');
+      showNewsletterStatus(result.already ? "Email ini sudah terdaftar. Terima kasih!" : "Terima kasih! Kamu sudah terdaftar.", "success");
       nlForm.reset();
     } catch {
       showNewsletterStatus('Pendaftaran gagal. Coba lagi sebentar.', 'error');

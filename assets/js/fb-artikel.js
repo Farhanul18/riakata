@@ -83,7 +83,7 @@ function renderArticle(a) {
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
       ${a.excerpt ? `<p class="article__excerpt">${escapeHtml(a.excerpt)}</p>` : ""}
       <div class="article__byline">
-        <span class="article__author">${escapeHtml(a.authorName || "Redaksi Riakata")}</span>
+        ${a.authorId ? `<a class="article__author" href="${href(`/penulis/${encodeURIComponent(a.authorId)}`)}">${escapeHtml(a.authorName || "Redaksi Riakata")}</a>` : `<span class="article__author">${escapeHtml(a.authorName || "Redaksi Riakata")}</span>`}
         ${published ? `<time datetime="${published.toISOString()}">${escapeHtml(formatDate(published))}</time>` : ""}
         <span>${a.readingTime || 1} menit baca</span>
         <span id="view-count">${(a.views || 0).toLocaleString("id-ID")} dibaca</span>
@@ -156,7 +156,7 @@ async function loadRelated(a) {
     $("related-grid").innerHTML = related.map(cardHtml).join("");
     $("related").hidden = false;
   } catch (err) {
-    console.warn("[terkait]", err.code || err);
+    console.error("[artikel terkait]", err);
   }
 }
 
@@ -165,6 +165,7 @@ async function loadPopular() {
     const { items } = await fetchPublished({ order: "views", pageSize: 5 });
     rankedEl.innerHTML = items.length ? items.map(rankedItemHtml).join("") : '<li class="empty">Belum ada data bacaan.</li>';
   } catch (err) {
+    console.error("[artikel terpopuler]", err);
     rankedEl.innerHTML = '<li class="empty">Tidak bisa dimuat.</li>';
   }
 }

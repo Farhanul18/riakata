@@ -1,75 +1,259 @@
 /* ==========================================================
-   style.css — tata letak halaman publik (beranda dan halaman daftar)
-   Butuh base.css + components.css.
-   ========================================================== */
+style.css — tata letak halaman publik (beranda dan halaman daftar)
+Butuh base.css + components.css.
+========================================================== */
 
-.hot-topics { margin-top: var(--space-3); }
+.hot-topics {
+margin-top: var(--space-3);
+}
 
 /* ---------- Kerangka: konten + sidebar ---------- */
 .page-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 21.5rem;
-  gap: var(--space-6);
-  align-items: start;
-  padding-top: var(--space-4);
+display: grid;
+grid-template-columns: minmax(0, 1fr) 21.5rem;
+gap: var(--space-6);
+align-items: start;
+padding-top: var(--space-4);
 }
-.page-main { display: grid; gap: var(--space-6); min-width: 0; }
-.page-side { display: grid; gap: var(--space-5); min-width: 0; }
+
+.page-main {
+display: grid;
+gap: var(--space-6);
+min-width: 0;
+}
+
+.page-side {
+display: grid;
+gap: var(--space-5);
+min-width: 0;
+}
 
 /* ---------- Sorotan: hero + 2 kartu samping ---------- */
-.featured { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: var(--space-5); }
-.featured .hero { min-height: 27rem; }
-.featured__side { display: grid; grid-template-rows: 1fr 1fr; gap: var(--space-5); }
-.featured__side .card--side { height: 100%; }
-.featured__side .card--side .card__media { width: 9rem; }
-.featured__side .card__title { font-size: var(--text-lg); }
+.featured {
+display: grid;
+grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+gap: var(--space-5);
+}
+
+.featured .hero {
+min-height: 30rem;
+}
+
+/* Tambahan ukuran teks headline & sembunyikan ringkasan */
+.hero__title {
+font-size: 2rem !important;
+font-weight: 700;
+}
+
+.hero__excerpt {
+display: none !important;
+}
+
+.featured__side {
+display: grid;
+grid-template-rows: 1fr 1fr;
+gap: var(--space-5);
+}
+
+.featured__side .card--side {
+height: 100%;
+}
+
+.featured__side .card--side .card__media {
+width: 9rem;
+}
+
+.featured__side .card__title {
+font-size: var(--text-lg);
+}
 
 /* ---------- Grid artikel terbaru ---------- */
-.latest-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+.latest-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: var(--space-4);
+}
 
 /* ---------- Newsletter: pesan status ---------- */
-.newsletter__status { margin-top: var(--space-2); font-size: var(--text-sm); font-weight: 600; }
-.newsletter__status:empty { display: none; }
-.newsletter__status.is-success { color: var(--color-success); }
-.newsletter__status.is-error { color: var(--color-danger); }
-.newsletter__input[aria-invalid="true"] { border-color: var(--color-danger); }
+.newsletter__status {
+margin-top: var(--space-2);
+font-size: var(--text-sm);
+font-weight: 600;
+}
+
+.newsletter__status:empty {
+display: none;
+}
+
+.newsletter__status.is-success {
+color: var(--color-success);
+}
+
+.newsletter__status.is-error {
+color: var(--color-danger);
+}
+
+.newsletter__input[aria-invalid="true"] {
+border-color: var(--color-danger);
+}
 
 /* ---------- Responsif ---------- */
 @media (max-width: 1100px) {
-  .page-grid { grid-template-columns: minmax(0, 1fr); }
-  .page-side { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-  .page-side .panel { grid-column: 1 / -1; }
+.page-grid {
+grid-template-columns: minmax(0, 1fr);
 }
+
+.page-side {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+align-items: start;
+}
+
+.page-side .panel {
+grid-column: 1 / -1;
+}
+}
+
 @media (max-width: 900px) {
-  .featured { grid-template-columns: minmax(0, 1fr); }
-  .featured .hero { min-height: 22rem; }
-  .featured__side { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
-  .latest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.featured {
+grid-template-columns: minmax(0, 1fr);
 }
+
+.featured .hero {
+min-height: 22rem;
+}
+
+.featured__side {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+grid-template-rows: auto;
+}
+
+.latest-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+
 @media (max-width: 640px) {
-  .featured__side { grid-template-columns: minmax(0, 1fr); }
-  .page-side { grid-template-columns: minmax(0, 1fr); }
-  .category-strip { gap: var(--space-5); }
-  .site-footer__inner { flex-direction: column; align-items: flex-start; }
+.featured__side {
+grid-template-columns: minmax(0, 1fr);
 }
+
+.page-side {
+grid-template-columns: minmax(0, 1fr);
+}
+
+.category-strip {
+gap: var(--space-5);
+}
+
+.site-footer__inner {
+flex-direction: column;
+align-items: flex-start;
+}
+
+.hero__title { 
+    font-size: 1.4rem !important; 
+    font-weight: 700;
+  }
+}
+
 @media (max-width: 480px) {
-  .latest-grid { grid-template-columns: minmax(0, 1fr); }
-  .featured__side .card--side .card__media { width: 6.5rem; }
+.latest-grid {
+grid-template-columns: minmax(0, 1fr);
+}
+
+.featured__side .card--side .card__media {
+width: 6.5rem;
+}
 }
 
 /* ---------- Tambahan Tahap 6: halaman daftar, kategori, cari ---------- */
-.breadcrumb { margin-bottom: var(--space-3); color: var(--color-text-muted); font-size: var(--text-sm); }
-.breadcrumb a { text-decoration: none; }
-.breadcrumb a:hover { color: var(--color-primary); text-decoration: underline; }
+.breadcrumb {
+margin-bottom: var(--space-3);
+color: var(--color-text-muted);
+font-size: var(--text-sm);
+}
 
-.page-title { padding-block: var(--space-5) var(--space-3); }
-.page-title__text { font: 800 var(--text-3xl)/1.15 var(--font-heading); overflow-wrap: anywhere; }
-.page-title__desc { max-width: 44rem; margin-top: var(--space-2); color: var(--color-text-muted); }
-.page-title .chip-row { margin-top: var(--space-4); flex-wrap: wrap; overflow: visible; }
-.search--wide { width: min(100%, 34rem); margin-top: var(--space-4); }
+.breadcrumb a {
+text-decoration: none;
+}
 
-.list-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
-.load-more { display: flex; justify-content: center; margin-top: var(--space-7); }
-@media (max-width: 1100px) { .list-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 800px) { .list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 480px) { .list-grid { grid-template-columns: minmax(0, 1fr); } }
+.breadcrumb a:hover {
+color: var(--color-primary);
+text-decoration: underline;
+}
+
+.page-title {
+padding-block: var(--space-5) var(--space-3);
+}
+
+.page-title__text {
+font: 800 var(--text-3xl)/1.15 var(--font-heading);
+overflow-wrap: anywhere;
+}
+
+.page-title__desc {
+max-width: 44rem;
+margin-top: var(--space-2);
+color: var(--color-text-muted);
+}
+
+.page-title .chip-row {
+margin-top: var(--space-4);
+flex-wrap: wrap;
+overflow: visible;
+}
+
+.search--wide {
+width: min(100%, 34rem);
+margin-top: var(--space-4);
+}
+
+.list-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: var(--space-4);
+margin-top: var(--space-4);
+}
+
+.load-more {
+display: flex;
+justify-content: center;
+margin-top: var(--space-7);
+}
+
+@media (max-width: 1100px) {
+.list-grid {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+}
+
+@media (max-width: 800px) {
+.list-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+
+@media (max-width: 480px) {
+.list-grid {
+grid-template-columns: minmax(0, 1fr);
+}
+}
+
+/* ---------- Tambahan Tahap 7: tim redaksi, profil penulis, halaman statis ---------- */
+.people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
+.person { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); text-align: center; }
+.person__name { font: 700 var(--text-base) var(--font-heading); }
+.person__role { color: var(--color-primary-dark); font-size: var(--text-sm); font-weight: 600; }
+.person__bio { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; color: var(--color-text-muted); font-size: var(--text-sm); }
+.group-title { margin-top: var(--space-7); font: 800 var(--text-xl) var(--font-heading); }
+.author-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); padding-block: var(--space-5) var(--space-3); }
+.author-head__bio { max-width: 40rem; margin-top: var(--space-2); color: var(--color-text-muted); }
+.static-page { max-width: 46rem; padding-bottom: var(--space-6); }
+.static-page .page-title { padding-inline: 0; }
+.static-page h2 { margin-top: 1.8em; font-size: var(--text-xl); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--space-4); margin-block: var(--space-5); }
+.contact-card { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
+.contact-card h3 { font: 700 var(--text-base) var(--font-heading); }
+.contact-card p { margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm); }
+.contact-card a { color: var(--color-primary-dark); font-weight: 600; }
+ 
