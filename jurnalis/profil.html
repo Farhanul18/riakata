@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil Saya — Riakata</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.auth-pending body{visibility:hidden}</style>
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
+</head>
+<body>
+<div class="app">
+  <aside class="app__sidebar">
+    <a class="app__logo" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="140" height="36"></a>
+    <nav class="app__nav" aria-label="Menu jurnalis">
+      <a href="/jurnalis/dashboard.html">Dashboard</a>
+      <a href="/jurnalis/tulis.html">Tulis Artikel</a>
+      <a href="/jurnalis/profil.html" aria-current="page">Profil Saya</a>
+      <a href="/" target="_blank" rel="noopener">Lihat Situs</a>
+    </nav>
+    <div class="app__user">
+      <p><span class="app__user-name" data-user-name></span><br><span class="app__user-role" data-user-role></span></p>
+      <button class="btn btn--outline btn--on-dark btn--sm" type="button" data-logout>Keluar</button>
+    </div>
+  </aside>
+
+  <main class="app__main" id="konten">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">Profil Saya</h1>
+        <p class="page-head__sub">Foto dan bio ini tampil di halaman penulis dan Tim Redaksi.</p>
+      </div>
+      <a class="btn btn--outline" id="public-link" href="/tim-redaksi" target="_blank" rel="noopener">Lihat halaman publik</a>
+    </div>
+
+    <form class="box" id="profile-form" style="max-width:36rem" novalidate>
+      <div class="person-row">
+        <div id="avatar"></div>
+        <div>
+          <label class="btn btn--outline btn--sm" for="photo">Ganti foto</label>
+          <input class="sr-only" id="photo" type="file" accept="image/jpeg,image/png,image/webp">
+          <button class="link-btn" type="button" id="photo-remove" hidden style="margin-left:var(--space-2)">Hapus foto</button>
+          <div class="progress" id="photo-progress" hidden style="margin-top:var(--space-2)"><div class="progress__bar" id="photo-bar"></div></div>
+          <p class="field__hint" id="photo-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field__label">Nama</span>
+        <p id="p-name" style="font-weight:600"></p>
+        <span class="field__hint">Nama dan jabatan diatur oleh redaksi. Hubungi redaktur bila perlu diubah.</span>
+      </div>
+      <div class="field">
+        <span class="field__label">Jabatan</span>
+        <p id="p-position"></p>
+      </div>
+      <div class="field">
+        <label class="field__label" for="bio">Bio singkat</label>
+        <textarea class="textarea" id="bio" rows="5" maxlength="400" placeholder="Ceritakan dirimu dan topik budaya yang kamu tekuni."></textarea>
+        <div class="counter" id="bio-counter" aria-hidden="true">0/400</div>
+      </div>
+      <div class="alert alert--error" id="profile-error" role="alert" hidden></div>
+      <button class="btn btn--primary" type="submit" id="profile-save">Simpan profil</button>
+    </form>
+  </main>
+</div>
+<script type="module" src="/assets/js/fb-jurnalis-profil.js"></script>
+</body>
+</html>

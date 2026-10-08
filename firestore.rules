@@ -27,8 +27,11 @@ service cloud.firestore {
     match /users/{uid} {
       allow read: if signedIn() && (request.auth.uid == uid || isEditor());
       allow update: if isEditor()
-        || (signedIn() && request.auth.uid == uid
-            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'bio', 'photoUrl']));
+        // Pemilik akun hanya boleh mengubah bio dan foto (nama, jabatan, peran diatur redaksi)
+        || (signedIn() && request.auth.uid == uid && me().isActive == true
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['bio', 'photoUrl'])
+            && request.resource.data.bio is string && request.resource.data.bio.size() <= 400
+            && request.resource.data.photoUrl is string);
       // Pembuatan akun dilakukan lewat Netlify Function (Admin SDK), bukan dari browser.
     }
 
@@ -92,7 +95,24 @@ service cloud.firestore {
       }
     }
 
-    // ---------- Usulan isu (pitch) — dipakai di Tahap 7 ----------
+    // ---------- Profil publik (nama, jabatan, bio, foto) — tanpa email ----------
+    match /profiles/{uid} {
+      allow read: if true;
+      allow create, update: if isEditor()
+        // Pemilik akun boleh memperbarui profil publiknya sendiri, tetapi nama, jabatan,
+        // peran, dan status harus sama persis dengan data akun (yang diatur redaksi).
+        || (signedIn() && request.auth.uid == uid && me().isActive == true
+            && request.resource.data.keys().hasOnly(['name', 'position', 'bio', 'photoUrl', 'role', 'isActive', 'updatedAt'])
+            && request.resource.data.name == me().get('name', '')
+            && request.resource.data.position == me().get('position', '')
+            && request.resource.data.role == me().role
+            && request.resource.data.isActive == true
+            && request.resource.data.bio is string && request.resource.data.bio.size() <= 400
+            && request.resource.data.photoUrl is string);
+      allow delete: if isEditor();
+    }
+
+    // ---------- Usulan isu (pitch) ----------
     match /issues/{issueId} {
       allow create: if isJournalist()
         && request.resource.data.authorId == request.auth.uid
