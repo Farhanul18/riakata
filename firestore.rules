@@ -1,10 +1,4 @@
 rules_version = '2';
-
-// ==========================================================
-// Riakata — Firestore Security Rules (lengkap, Tahap 5)
-// Tempel di Firebase Console > Firestore Database > Rules, lalu Publish.
-// Peran dibaca dari dokumen users/{uid}.role ("editor" | "journalist").
-// ==========================================================
 service cloud.firestore {
   match /databases/{database}/documents {
 
