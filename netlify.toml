@@ -11,9 +11,20 @@
   directory = "netlify/functions"
 
 # ---------- URL cantik halaman publik ----------
+# Halaman artikel melewati function supaya meta tag (pratinjau WhatsApp/IG/Google) terisi
 [[redirects]]
   from = "/artikel/*"
-  to = "/artikel.html"
+  to = "/.netlify/functions/og-artikel"
+  status = 200
+
+[[redirects]]
+  from = "/rss.xml"
+  to = "/.netlify/functions/rss"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/sitemap"
   status = 200
 
 [[redirects]]
@@ -70,3 +81,24 @@
   for = "/login.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# ---------- Cache ----------
+# Berkas statis tidak diberi nama unik, jadi cukup disimpan singkat lalu divalidasi ulang.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/assets/logo/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# ---------- Content Security Policy (MODE LAPOR SAJA) ----------
+# "Report-Only" tidak memblokir apa pun; pelanggaran hanya tampil di Console browser.
+# Cek Console di setiap halaman. Kalau bersih, ubah nama header menjadi
+# "Content-Security-Policy" supaya benar-benar diberlakukan.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' https://www.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://res.cloudinary.com; connect-src 'self' https://*.googleapis.com https://api.cloudinary.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"

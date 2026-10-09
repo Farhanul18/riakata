@@ -17,6 +17,7 @@
 // Isi dari Cloudinary Dashboard. Keduanya BOLEH publik (bukan API secret).
 const CLOUD_NAME = "qsxo2pic";
 const UPLOAD_PRESET = "riakata";
+const UNSIGNED_READY = !CLOUD_NAME.startsWith("ISI_") && !UPLOAD_PRESET.startsWith("ISI_");
 
 /** false selama masih berisi tulisan "ISI_..." */
 export const isCloudinaryConfigured =

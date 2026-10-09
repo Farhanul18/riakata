@@ -28,7 +28,7 @@ function setMeta(selector, attr, value) {
 
 function applySeo(a) {
   const url = `${location.origin}/artikel/${encodeURIComponent(a.slug)}`;
-  const image = a.coverUrl ? cloudinaryUrl(a.coverUrl, "f_auto,q_auto,c_fill,g_auto,w_1200,h_630") : "";
+  const image = a.coverUrl ? cloudinaryUrl(a.coverUrl, "f_jpg,q_auto,c_fill,g_auto,w_1200,h_630") : "";
   const description = a.excerpt || "Cerita, Budaya, Kita.";
 
   document.title = `${a.title} — Riakata`;
@@ -48,6 +48,8 @@ function applySeo(a) {
   }
   canonical.href = url;
 
+  // Di Netlify, JSON-LD sudah disisipkan server (og-artikel.js); jangan dobel
+  if (document.head.querySelector('script[type="application/ld+json"]')) return;
   const ld = document.createElement("script");
   ld.type = "application/ld+json";
   ld.textContent = JSON.stringify({

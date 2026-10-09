@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /jurnalis/
+Disallow: /redaksi/
+Disallow: /login.html
+Disallow: /cari
+Disallow: /styleguide.html
+
+# Ganti dengan alamat domain situs kamu
+Sitemap: https://riakata.my.id/sitemap.xml
