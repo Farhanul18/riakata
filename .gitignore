@@ -1,0 +1,17 @@
+# Paket Node (dipasang Netlify saat deploy, tidak perlu di repository)
+node_modules/
+
+# Variabel rahasia (yang BOLEH di-commit hanya .env.example)
+.env
+.env.*
+!.env.example
+
+# Kunci service account Firebase: JANGAN PERNAH di-commit
+*firebase-adminsdk*.json
+serviceAccount*.json
+
+# Pengaturan lokal Netlify dan sistem
+.netlify/
+.DS_Store
+Thumbs.db
+*.log
