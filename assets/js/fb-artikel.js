@@ -70,8 +70,14 @@ function applySeo(a) {
 /* ---------- Tampilan artikel ---------- */
 function renderArticle(a) {
   const published = toDate(a.publishedAt);
+  let captionText = "";
+  if (a.coverAlt) captionText += escapeHtml(a.coverAlt);
+  if (a.coverCredit) captionText += captionText ? ` (${escapeHtml(a.coverCredit)})` : escapeHtml(a.coverCredit);
+  
+  const captionHtml = captionText ? `<figcaption>${captionText}</figcaption>` : "";
+
   const cover = a.coverUrl
-    ? `<figure class="article__cover"><img src="${escapeHtml(cloudinaryUrl(a.coverUrl, "f_auto,q_auto,c_fill,g_auto,w_1200,h_675"))}" alt="${escapeHtml(a.coverAlt || "")}" width="1200" height="675" fetchpriority="high">${a.coverCredit ? `<figcaption>${escapeHtml(a.coverCredit)}</figcaption>` : ""}</figure>`
+    ? `<figure class="article__cover"><img src="${escapeHtml(cloudinaryUrl(a.coverUrl, "f_auto,q_auto,c_fill,g_auto,w_1200,h_675"))}" alt="${escapeHtml(a.coverAlt || "")}" width="1200" height="675" fetchpriority="high">${captionHtml}</figure>`
     : "";
   const tags = (a.tags || []).map((t) => `<a class="chip" href="${tagUrl(t)}">#${escapeHtml(t)}</a>`).join("");
 

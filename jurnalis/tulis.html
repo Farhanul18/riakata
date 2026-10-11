@@ -51,8 +51,8 @@
         <div class="editor-main">
           <div>
             <label class="sr-only" for="title">Judul artikel</label>
-            <input class="title-input" id="title" type="text" maxlength="120" placeholder="Judul artikel" autocomplete="off">
-            <div class="counter" id="title-counter" aria-hidden="true">0/120</div>
+            <input class="title-input" id="title" type="text" maxlength="250" placeholder="Judul artikel" autocomplete="off">
+            <div class="counter" id="title-counter" aria-hidden="true">0/250</div>
           </div>
           <div>
             <p class="field__label" style="margin-bottom:var(--space-2)">Isi artikel</p>
@@ -95,9 +95,9 @@
             <button class="link-btn" type="button" id="cover-remove" hidden>Hapus gambar</button>
             <input type="hidden" id="cover-url">
             <div class="field">
-              <label class="field__label" for="cover-alt">Deskripsi gambar (alt text)</label>
-              <input class="input" id="cover-alt" type="text" maxlength="160" autocomplete="off">
-              <span class="field__hint">Jelaskan isi gambar untuk pembaca tunanetra.</span>
+              <label class="field__label" for="cover-alt">Deskripsi gambar</label>
+              <textarea class="textarea" id="cover-alt" rows="3" placeholder="Jelaskan isi gambar..."></textarea>
+              <span class="field__hint">Jelaskan isi gambar</span>
             </div>
             <div class="field">
               <label class="field__label" for="cover-credit">Kredit foto</label>
@@ -117,6 +117,15 @@
         </div>
       </div>
     </form>
+
+    <dialog class="dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+      <h2 class="dialog__title" id="confirm-title">Kirim ke redaksi?</h2>
+      <p>Kamu tidak bisa mengedit artikel ini lagi sampai editor mengembalikannya.</p>
+      <div class="dialog__actions">
+        <button class="btn btn--outline" type="button" id="confirm-cancel">Batal</button>
+        <button class="btn btn--primary" type="button" id="confirm-submit">Ya, Kirim</button>
+      </div>
+    </dialog>
   </main>
 </div>
 

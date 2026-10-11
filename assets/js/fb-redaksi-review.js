@@ -170,7 +170,38 @@ async function changeStatus(to) {
     noteEl?.focus();
     return;
   }
-  if (CONFIRM[to] && !confirm(CONFIRM[to])) return;
+  // --- MULAI KODE POP-UP KONFIRMASI CUSTOM ---
+  if (CONFIRM[to]) {
+    const isConfirmed = await new Promise((resolve) => {
+      const dialog = document.createElement("dialog");
+      dialog.className = "dialog";
+      dialog.innerHTML = `
+        <h2 class="dialog__title">Konfirmasi</h2>
+        <p>${escapeHtml(CONFIRM[to])}</p>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" type="button" id="kustom-batal">Batal</button>
+          <button class="btn btn--primary" type="button" id="kustom-ya">Ya, Lanjutkan</button>
+        </div>
+      `;
+      document.body.appendChild(dialog);
+
+      const btnYes = dialog.querySelector("#kustom-ya");
+      const btnNo = dialog.querySelector("#kustom-batal");
+
+      const closeDialog = (result) => {
+        dialog.close();
+        document.body.removeChild(dialog); 
+        resolve(result);
+      };
+
+      btnYes.addEventListener("click", () => closeDialog(true));
+      btnNo.addEventListener("click", () => closeDialog(false));
+
+      dialog.showModal(); 
+    });
+
+    if (!isConfirmed) return; 
+  }
 
   busy = true;
   actionEl.querySelectorAll("button").forEach((b) => { b.disabled = true; });

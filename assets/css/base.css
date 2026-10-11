@@ -65,7 +65,7 @@
   --shadow-sm: 0 1px 2px rgba(60, 40, 20, 0.06);
   --shadow-md: 0 8px 24px rgba(60, 40, 20, 0.1);
 
-  --container: 1280px;
+  --container: 1150px;
 }
 
 /* ---------- Reset ---------- */
@@ -120,7 +120,10 @@ p { text-wrap: pretty; }
 .skip-link:focus { top: var(--space-4); }
 
 /* ---------- Layout dasar ---------- */
-.container { width: min(100% - 2rem, var(--container)); margin-inline: auto; }
+.container { 
+  width: min(100% - 2rem, var(--container)); 
+  margin-inline: auto; 
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

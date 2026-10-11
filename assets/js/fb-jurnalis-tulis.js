@@ -250,7 +250,29 @@ async function save(wantSubmit) {
   showProblems(problems);
   if (problems.length) return;
 
-  if (wantSubmit && !confirm("Kirim artikel ke redaksi? Kamu tidak bisa mengedit lagi sampai editor mengembalikannya.")) return;
+  if (wantSubmit) {
+    const isConfirmed = await new Promise((resolve) => {
+      const dialog = document.getElementById("confirm-dialog");
+      const btnYes = document.getElementById("confirm-submit");
+      const btnNo = document.getElementById("confirm-cancel");
+      
+      const closeDialog = () => {
+        dialog.close();
+        btnYes.removeEventListener("click", onYes);
+        btnNo.removeEventListener("click", onNo);
+      };
+      
+      const onYes = () => { closeDialog(); resolve(true); };
+      const onNo = () => { closeDialog(); resolve(false); };
+      
+      btnYes.addEventListener("click", onYes);
+      btnNo.addEventListener("click", onNo);
+      
+      dialog.showModal(); 
+    });
+    
+    if (!isConfirmed) return; 
+  }
 
   busy = true;
   refreshButtons();
