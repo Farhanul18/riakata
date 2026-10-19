@@ -1,12 +1,3 @@
-/* ==========================================================
-   base.css — reset, design tokens, tipografi dasar, utilitas
-   Dimuat PERTAMA di semua halaman.
-   Font (taruh di <head> tiap halaman, sebelum base.css):
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-   ========================================================== */
-
 :root {
   /* Warna dasar */
   --color-bg: #F6F1EA;

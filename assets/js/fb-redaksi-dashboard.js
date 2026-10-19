@@ -1,7 +1,3 @@
-/* ==========================================================
-   fb-redaksi-dashboard.js — ringkasan untuk redaktur
-   Memuat artikel sekali (maks 300), lalu menghitung dan memilah di browser.
-   ========================================================== */
 import { db, doc, collection, query, where, limit, getDocs, updateDoc, serverTimestamp } from "./firebase-config.js";
 import { requireRole } from "./auth-guard.js";
 import { escapeHtml, timeAgo, formatDate, STATUS_LABEL, statusClass, categoryName, showToast } from "./utils.js";

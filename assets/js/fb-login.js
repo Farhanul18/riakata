@@ -1,7 +1,3 @@
-/* ==========================================================
-   fb-login.js — logika halaman login
-   Alur: login Firebase Auth -> baca users/{uid} -> arahkan sesuai role.
-   ========================================================== */
 import {
   auth, db, isConfigured, onAuthStateChanged, signInWithEmailAndPassword,
   signOut, sendPasswordResetEmail, doc, getDoc,

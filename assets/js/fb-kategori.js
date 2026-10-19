@@ -1,6 +1,3 @@
-/* ==========================================================
-   fb-kategori.js — daftar artikel per kategori (?k=budaya atau /kategori/budaya)
-   ========================================================== */
 import { fetchPublished, fetchCategories } from "./articles.js";
 import { mountArticleList, categoryUrl } from "./render.js";
 import { routeParam, escapeHtml, categoryName } from "./utils.js";

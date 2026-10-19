@@ -1,7 +1,3 @@
-/* ==========================================================
-   fb-redaksi-kategori.js — kelola kategori dan Topik Hangat (editor)
-   Kategori: koleksi "categories" (ID dokumen = slug). Topik: settings/site.hotTopics.
-   ========================================================== */
 import {
   db, doc, collection, getDoc, getDocs, setDoc, updateDoc, deleteDoc,
   query, where, orderBy, limit, writeBatch,

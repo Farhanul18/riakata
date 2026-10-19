@@ -1,7 +1,3 @@
-/* ==========================================================
-   sitemap.js — sitemap.xml dinamis (alamat: /sitemap.xml)
-   Isi: halaman utama, kategori, penulis, dan semua artikel terbit (maks. 1000).
-   ========================================================== */
 const { getAdmin, siteUrl, escapeHtml } = require("./lib/firebase");
 
 const STATIC_PAGES = ["/", "/terkini", "/terpopuler", "/pilihan-editor", "/tim-redaksi", "/tentang", "/pedoman", "/kontak", "/privasi"];

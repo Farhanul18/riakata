@@ -1,14 +1,3 @@
-/* ==========================================================
-   auth-guard.js — penjaga halaman jurnalis & redaksi
-   Cara pakai di halaman yang wajib login:
-     1) <html lang="id" class="auth-pending"> dan di <head>:
-        <style>html.auth-pending body{visibility:hidden}</style>
-     2) <script type="module">
-          import { requireRole } from "/assets/js/auth-guard.js";
-          const { user, profile } = await requireRole(["editor"]);
-        </script>
-   PENTING: ini cuma pengaman tampilan. Pengaman sebenarnya = firestore.rules.
-   ========================================================== */
 import { auth, db, onAuthStateChanged, signOut, doc, getDoc } from "./firebase-config.js";
 import { ROLE_HOME, ROLE_LABEL } from "./utils.js";
 

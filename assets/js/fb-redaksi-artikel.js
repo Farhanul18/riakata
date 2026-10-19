@@ -1,7 +1,3 @@
-/* ==========================================================
-   fb-redaksi-artikel.js — kelola semua artikel (editor)
-   Filter, cari, atur Headline & Pilihan Editor, arsipkan, hapus.
-   ========================================================== */
 import {
   db, doc, collection, query, limit, getDocs, writeBatch, serverTimestamp,
 } from "./firebase-config.js";

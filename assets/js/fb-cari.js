@@ -1,9 +1,3 @@
-/* ==========================================================
-   fb-cari.js — pencarian artikel (?q=kata)
-   Firestore tidak punya pencarian teks penuh, jadi 200 artikel terbaru
-   diambil lalu disaring di browser. Cukup untuk skala tugas ini;
-   untuk skala besar gunakan layanan seperti Algolia/Typesense.
-   ========================================================== */
 import { fetchPublished, describeError } from "./articles.js";
 import { cardHtml, emptyHtml, errorHtml, skeletonCards } from "./render.js";
 import { getParam } from "./utils.js";

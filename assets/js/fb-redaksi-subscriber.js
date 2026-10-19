@@ -1,6 +1,3 @@
-/* ==========================================================
-   fb-redaksi-subscriber.js — daftar pelanggan newsletter (editor)
-   ========================================================== */
 import { db, doc, collection, getDocs, deleteDoc, query, orderBy, limit } from "./firebase-config.js";
 import { requireRole } from "./auth-guard.js";
 import { escapeHtml, formatDate, showToast } from "./utils.js";

@@ -1,9 +1,3 @@
-/* ==========================================================
-   fb-jurnalis-profil.js — jurnalis mengedit bio dan foto profilnya sendiri
-   Yang boleh diubah sendiri: bio dan foto. Nama dan jabatan diatur redaksi
-   (dikunci juga di firestore.rules, bukan hanya di tampilan).
-   Disimpan ke users/{uid} (privat) dan profiles/{uid} (publik, tanpa email).
-   ========================================================== */
 import { db, doc, writeBatch, serverTimestamp } from "./firebase-config.js";
 import { requireRole } from "./auth-guard.js";
 import { uploadImage, FOLDERS } from "./cloudinary.js";

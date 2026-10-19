@@ -1,9 +1,3 @@
-/* ==========================================================
-   firebase-config.js — inisialisasi Firebase (dipakai SEMUA file fb-*.js)
-   Config Firebase memang boleh publik. Yang melindungi data = firestore.rules.
-   Isi dari: Firebase Console > Project settings > Your apps > Web app > Config
-   Versi SDK diatur di satu tempat ini saja (ganti angka versi di semua URL bila update).
-   ========================================================== */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";

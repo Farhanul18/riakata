@@ -1,6 +1,3 @@
-/* ==========================================================
-   article.css — halaman baca artikel. Butuh base, components, style.css.
-   ========================================================== */
 .article { min-width: 0; }
 .article__title { 
   margin-top: var(--space-3); 

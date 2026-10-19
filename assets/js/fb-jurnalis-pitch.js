@@ -1,7 +1,3 @@
-/* ==========================================================
-   fb-jurnalis-pitch.js — usulan isu (pitch) dari jurnalis
-   Koleksi "issues": jurnalis membuat (status "submitted"), editor memutuskan.
-   ========================================================== */
 import { db, collection, query, where, limit, getDocs, addDoc, serverTimestamp, Timestamp } from "./firebase-config.js";
 import { requireRole } from "./auth-guard.js";
 import { escapeHtml, timeAgo, formatDate, showToast } from "./utils.js";

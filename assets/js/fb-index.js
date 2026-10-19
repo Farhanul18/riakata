@@ -1,8 +1,3 @@
-/* ==========================================================
-   fb-index.js — beranda dengan data asli dari Firestore
-   Hero = artikel isHeadline (cadangan: terbaru). Samping = Pilihan Editor.
-   Grid = terbaru. Sidebar = paling banyak dibaca. Chip = settings/site.hotTopics.
-   ========================================================== */
 import { fetchPublished, fetchHeadline, fetchSettings, describeError } from "./articles.js";
 import { heroInnerHtml, sideCardHtml, cardHtml, rankedItemHtml, emptyHtml, errorHtml, tagUrl } from "./render.js";
 import { escapeHtml, slugify } from "./utils.js";

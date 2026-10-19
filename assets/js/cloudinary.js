@@ -1,20 +1,3 @@
-/* ==========================================================
-   cloudinary.js — upload gambar ke Cloudinary dari browser
-   Mode saat ini: UNSIGNED PRESET (tanpa secret di frontend).
-   Tahap 8: diganti signed upload lewat netlify/functions/cloudinary-sign.js.
-
-   Contoh pakai:
-     import { uploadImage, FOLDERS } from "/assets/js/cloudinary.js";
-     const img = await uploadImage(file, {
-       folder: FOLDERS.covers,
-       onProgress: (persen) => { bar.value = persen; },
-     });
-     // img = { url, publicId, width, height, bytes, format }
-     // Simpan img.url di Firestore (articles.coverUrl).
-     // Saat ditampilkan, tambahkan transformasi lewat cloudinaryUrl() di utils.js.
-   ========================================================== */
-
-// Isi dari Cloudinary Dashboard. Keduanya BOLEH publik (bukan API secret).
 const CLOUD_NAME = "qsxo2pic";
 const UPLOAD_PRESET = "riakata";
 const UNSIGNED_READY = !CLOUD_NAME.startsWith("ISI_") && !UPLOAD_PRESET.startsWith("ISI_");

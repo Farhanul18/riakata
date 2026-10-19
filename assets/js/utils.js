@@ -1,8 +1,3 @@
-/* ==========================================================
-   utils.js — fungsi bantu umum. Hanya di sini, jangan diduplikasi.
-   ========================================================== */
-
-/** Halaman beranda tiap peran, dan folder yang boleh diakses tiap peran. */
 export const ROLE_HOME = {
   editor: "/redaksi/dashboard.html",
   journalist: "/jurnalis/dashboard.html",

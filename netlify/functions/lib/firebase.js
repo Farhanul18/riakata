@@ -1,12 +1,5 @@
-/* ==========================================================
-   lib/firebase.js — bantuan bersama untuk Netlify Functions
-   (folder lib/ bukan function, hanya dipakai oleh function lain)
-   Variabel lingkungan: FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY
-   Opsional: SITE_URL (alamat situs utama; kalau kosong dipakai URL dari Netlify)
-   ========================================================== */
 const admin = require("firebase-admin");
 
-/** Inisialisasi sekali, lalu pakai ulang. Melempar Error("env-kosong") bila variabel belum diisi. */
 function getAdmin() {
   if (!admin.apps.length) {
     const { FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY } = process.env;

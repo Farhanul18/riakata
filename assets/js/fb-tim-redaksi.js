@@ -1,6 +1,3 @@
-/* ==========================================================
-   fb-tim-redaksi.js — halaman Tim Redaksi (dari koleksi publik "profiles")
-   ========================================================== */
 import { db, collection, query, where, getDocs } from "./firebase-config.js";
 import { describeError } from "./articles.js";
 import { avatarHtml, errorHtml, emptyHtml } from "./render.js";

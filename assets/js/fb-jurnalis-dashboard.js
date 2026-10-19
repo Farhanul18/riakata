@@ -1,8 +1,3 @@
-/* ==========================================================
-   fb-jurnalis-dashboard.js — daftar artikel milik jurnalis
-   Membaca articles where authorId == uid. Pengurutan dilakukan di browser
-   (jumlah artikel per jurnalis kecil) supaya tidak butuh index Firestore.
-   ========================================================== */
 import { db, collection, query, where, limit, getDocs, doc, deleteDoc } from "./firebase-config.js";
 import { requireRole } from "./auth-guard.js";
 import { escapeHtml, timeAgo, getParam, STATUS_LABEL, statusClass, categoryName, showToast } from "./utils.js";

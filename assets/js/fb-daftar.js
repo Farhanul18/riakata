@@ -1,7 +1,3 @@
-/* ==========================================================
-   fb-daftar.js — satu halaman untuk Terkini, Terpopuler, Pilihan Editor, dan Tag
-   Dikenali dari ?tipe=... (lokal) atau alamat cantik (/terkini, /tag/batik).
-   ========================================================== */
 import { fetchPublished } from "./articles.js";
 import { mountArticleList } from "./render.js";
 import { getParam, href, slugify, escapeHtml } from "./utils.js";

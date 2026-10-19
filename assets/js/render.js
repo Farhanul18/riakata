@@ -1,7 +1,3 @@
-/* ==========================================================
-   render.js — pembuat HTML kartu/daftar untuk halaman publik
-   Semua teks dari database di-escape di sini. Jangan menyusun HTML artikel di tempat lain.
-   ========================================================== */
 import { escapeHtml, timeAgo, toDate, cloudinaryUrl, categoryName, href } from "./utils.js";
 import { describeError } from "./articles.js";
 

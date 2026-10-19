@@ -25,7 +25,6 @@
 </head>
 <body>
 
-<!-- Sprite ikon: dipakai lewat <use href="#i-nama"> -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
@@ -85,7 +84,7 @@
       </ul>
     </nav>
   </div>
-  <!-- Topik Hangat: diisi fb-index.js dari Firestore (settings/site.hotTopics) -->
+
   <div class="container hot-topics" hidden>
     <div class="chip-row" id="hot-topics" aria-label="Topik hangat"></div>
   </div>
@@ -97,7 +96,7 @@
 
     <div class="page-main">
 
-      <!-- Sorotan: hero (headline) + 2 kartu samping -->
+      <!-- Sorotan -->
       <section class="featured" aria-label="Sorotan utama">
         <article class="hero" id="hero" aria-busy="true"><div class="hero__img skeleton"></div></article>
 
@@ -124,7 +123,7 @@
       </section>
     </div>
 
-    <!-- ============ SIDEBAR ============ -->
+    <!-- SIDEBAR -->
     <aside class="page-side" aria-label="Sidebar">
       <section class="panel" aria-labelledby="judul-populer">
         <div class="panel__head">
@@ -161,7 +160,7 @@
   </div>
 </main>
 
-<!-- ============ FOOTER ============ -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <a class="brand" href="/" aria-label="Riakata, ke beranda"><img src="/assets/logo/riakata-logo-light.svg" alt="Riakata" width="150" height="38" loading="lazy"></a>

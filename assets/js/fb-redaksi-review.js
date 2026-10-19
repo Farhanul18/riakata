@@ -1,8 +1,3 @@
-/* ==========================================================
-   fb-redaksi-review.js — review satu artikel (?id=...)
-   Editor membaca, memberi catatan, lalu mengubah status.
-   Setiap perubahan status dicatat di articles/{id}/revisions.
-   ========================================================== */
 import {
   db, doc, getDoc, getDocs, collection, query, where, orderBy, limit, writeBatch, serverTimestamp,
 } from "./firebase-config.js";
@@ -16,13 +11,12 @@ const { user, profile } = await requireRole(["editor"]);
 
 const articleId = getParam("id");
 const previewEl = document.getElementById("preview");
-const actionEl = document.getElementById("action-body");
+const actionEl = document.getElementById("action-body");``
 const infoEl = document.getElementById("info");
 const historyEl = document.getElementById("history");
 const noticeEl = document.getElementById("review-notice");
-const layoutEl = document.getElementById("review-layout");
+const layoutEl = document.getElementById("review-layout");``
 
-/** Perpindahan status yang diizinkan untuk editor. */
 const TRANSITIONS = {
   submitted: ["in_review", "needs_revision", "rejected", "approved", "published"],
   in_review: ["needs_revision", "rejected", "approved", "published"],

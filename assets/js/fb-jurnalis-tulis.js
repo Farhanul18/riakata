@@ -1,9 +1,3 @@
-/* ==========================================================
-   fb-jurnalis-tulis.js — tulis / edit artikel (jurnalis)
-   Alur: isi form -> "Simpan draft" (status draft) atau
-         "Kirim ke redaksi" (status submitted + catatan di articles/{id}/revisions).
-   Mode edit dibuka lewat ?id=<ID artikel>.
-   ========================================================== */
 import {
   db, doc, getDoc, getDocs, collection, query, orderBy, writeBatch, serverTimestamp,
 } from "./firebase-config.js";

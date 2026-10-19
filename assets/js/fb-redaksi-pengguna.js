@@ -1,9 +1,3 @@
-/* ==========================================================
-   fb-redaksi-pengguna.js — kelola pengguna (editor)
-   - Daftar akun, edit profil, aktif/nonaktif
-   - Tambah jurnalis lewat Netlify Function (butuh Admin SDK, tidak bisa dari browser)
-   - Profil publik disalin ke koleksi "profiles" (tanpa email) untuk halaman penulis & tim redaksi
-   ========================================================== */
 import { auth, db, doc, collection, getDocs, query, limit, writeBatch, serverTimestamp } from "./firebase-config.js";
 import { requireRole } from "./auth-guard.js";
 import { uploadImage, FOLDERS } from "./cloudinary.js";

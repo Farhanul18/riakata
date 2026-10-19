@@ -1,8 +1,3 @@
-/* ==========================================================
-   fb-artikel.js — halaman baca artikel (?slug=... atau /artikel/judul)
-   Memuat artikel terbit, mengisi SEO dasar, menghitung pembaca,
-   dan menampilkan artikel terkait serta "Paling Banyak Dibaca".
-   ========================================================== */
 import { db, doc, updateDoc, increment } from "./firebase-config.js";
 import { fetchBySlug, fetchPublished, describeError } from "./articles.js";
 import { articleUrl, categoryUrl, tagUrl, cardHtml, rankedItemHtml, emptyHtml, errorHtml } from "./render.js";

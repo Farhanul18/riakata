@@ -1,7 +1,3 @@
-/* ==========================================================
-   fb-penulis.js — profil dan tulisan satu penulis (?id=UID atau /penulis/UID)
-   Profil dibaca dari koleksi publik "profiles" (tanpa email).
-   ========================================================== */
 import { db, doc, getDoc } from "./firebase-config.js";
 import { fetchPublished } from "./articles.js";
 import { mountArticleList, avatarHtml } from "./render.js";

@@ -1,10 +1,3 @@
-/* ==========================================================
-   articles.js — query artikel untuk halaman PUBLIK
-   Semua query WAJIB memakai where("status", "==", "published")
-   (itu syarat Firestore Rules untuk pengunjung tanpa login).
-   Query gabungan butuh index; kalau muncul error "failed-precondition",
-   klik tautan di Console untuk membuat index otomatis.
-   ========================================================== */
 import {
   db, collection, doc, getDoc, getDocs, query, where, orderBy, limit, startAfter,
 } from "./firebase-config.js";
