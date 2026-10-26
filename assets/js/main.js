@@ -114,3 +114,22 @@ if (nlForm && nlInput && nlStatus) {
     }
   });
 }
+
+document.addEventListener("copy", (event) => {
+
+  const selection = window.getSelection();
+  const selectedText = selection.toString();
+
+  if (!selectedText || selectedText.length < 5) return;
+
+  const pageTitle = document.title.replace(" — Riakata", ""); 
+  const pageUrl = window.location.href; 
+
+  const appendedText = `\n\nBaca artikel Riakata, "${pageTitle}" selengkapnya di ${pageUrl}`;
+
+  const finalCopyText = selectedText + appendedText;
+
+  event.clipboardData.setData("text/plain", finalCopyText);
+
+  event.preventDefault();
+});
