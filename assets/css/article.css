@@ -55,7 +55,9 @@
 .prose { 
   font-size: 1.125rem; 
   line-height: 1.85; 
-  overflow-wrap: anywhere; 
+  overflow-wrap: break-word;
+  word-break: normal;
+  text-align: left;
 }
 
 .prose > * + * { 

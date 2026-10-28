@@ -93,7 +93,7 @@ function renderArticle(a) {
       </div>
     </header>
     ${cover}
-    <div class="prose">${sanitizeHtml(a.content || "")}</div>
+    <div class="prose">${sanitizeHtml((a.content || "").replace(/&nbsp;|\u00A0/g, " "))}</div>
     ${tags ? `<div class="chip-row article__tags" style="flex-wrap:wrap" aria-label="Tag">${tags}</div>` : ""}
     <div class="share" id="share"><span class="share__label">Bagikan</span></div>
     <section class="related" id="related" hidden aria-labelledby="judul-terkait">
