@@ -148,8 +148,8 @@ export function sanitizeHtml(html = "") {
 
   const clean = (parent) => {
     [...parent.childNodes].forEach((node) => {
-      if (node.nodeType === 3) return; // teks biasa
-      if (node.nodeType !== 1) return node.remove(); // komentar dll.
+      if (node.nodeType === 3) return; 
+      if (node.nodeType !== 1) return node.remove(); 
 
       const tag = node.tagName;
       if (DROP_TAGS.has(tag)) return node.remove();
