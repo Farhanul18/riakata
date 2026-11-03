@@ -1,3 +1,8 @@
+/* ==========================================================
+   fb-redaksi-review.js — review satu artikel (?id=...)
+   Editor membaca, memberi catatan, lalu mengubah status.
+   Setiap perubahan status dicatat di articles/{id}/revisions.
+   ========================================================== */
 import {
   db, doc, getDoc, getDocs, collection, query, where, orderBy, limit, writeBatch, serverTimestamp,
 } from "./firebase-config.js";
@@ -11,17 +16,18 @@ const { user, profile } = await requireRole(["editor"]);
 
 const articleId = getParam("id");
 const previewEl = document.getElementById("preview");
-const actionEl = document.getElementById("action-body");``
+const actionEl = document.getElementById("action-body");
 const infoEl = document.getElementById("info");
 const historyEl = document.getElementById("history");
 const noticeEl = document.getElementById("review-notice");
-const layoutEl = document.getElementById("review-layout");``
+const layoutEl = document.getElementById("review-layout");
 
+/** Perpindahan status yang diizinkan untuk editor. */
 const TRANSITIONS = {
   submitted: ["in_review", "needs_revision", "rejected", "approved", "published"],
   in_review: ["needs_revision", "rejected", "approved", "published"],
   approved: ["published", "needs_revision"],
-  published: ["archived"],
+  published: ["needs_revision", "archived"],
   archived: ["published"],
 };
 const BUTTONS = {
@@ -37,6 +43,13 @@ const CONFIRM = {
   rejected: "Tolak artikel ini? Jurnalis akan melihat catatanmu.",
   published: "Terbitkan artikel ini ke publik?",
   archived: "Turunkan artikel dari publik dan arsipkan?",
+};
+/** Label dan konfirmasi khusus untuk transisi tertentu (override BUTTONS/CONFIRM biasa). */
+const SPECIAL_TRANSITION = {
+  "published->needs_revision": {
+    label: "Kembalikan untuk Revisi",
+    confirm: "Menarik artikel ini dari situs untuk direvisi jurnalis? Artikel akan HILANG dari halaman publik sampai diterbitkan ulang.",
+  },
 };
 
 let article = null;
@@ -83,6 +96,7 @@ function renderActions() {
   const a = article;
   const next = TRANSITIONS[a.status] || [];
   let html = `<p>Status: <span class="${statusClass(a.status)}">${escapeHtml(STATUS_LABEL[a.status] || a.status)}</span></p>`;
+  html += `<p style="margin-top:var(--space-3)"><a class="btn btn--outline btn--sm" href="/redaksi/edit.html?id=${a.id}">Edit Artikel (isi lengkap)</a></p>`;
 
   if (a.status === "published") {
     html += `<p><a class="link-more" href="/artikel.html?slug=${encodeURIComponent(a.slug)}" target="_blank" rel="noopener">Lihat di situs</a></p>`;
@@ -112,10 +126,73 @@ function renderActions() {
   }
   html += `<div class="action-buttons" style="margin-top:var(--space-4)">${next.map((to) => {
     const b = BUTTONS[to];
-    const label = a.status === "archived" && to === "published" ? "Terbitkan lagi" : b.label;
+    const special = SPECIAL_TRANSITION[`${a.status}->${to}`];
+    const label = special?.label || (a.status === "archived" && to === "published" ? "Terbitkan lagi" : b.label);
     return `<button class="btn ${b.cls}" type="button" data-to="${to}">${label}</button>`;
   }).join("")}</div>`;
   actionEl.innerHTML = html;
+}
+
+/* ---------- Permintaan revisi dari jurnalis (field articles.revisionRequest) ---------- */
+function renderRevisionRequest() {
+  const box = document.getElementById("revreq-box");
+  const r = article.revisionRequest;
+  if (!r) { box.hidden = true; return; }
+
+  box.hidden = false;
+  const statusLabel = { pending: "Menunggu keputusan", approved: "Disetujui", declined: "Ditolak" }[r.status] || r.status;
+  let html = `
+    <p><strong>${escapeHtml(article.authorName || "Jurnalis")}</strong> meminta artikel ini direvisi (${escapeHtml(statusLabel)}).</p>
+    <p class="text-muted" style="font-size:var(--text-sm);margin-top:var(--space-2)">${escapeHtml(r.reason || "")}</p>`;
+  if (r.status === "pending" && article.status === "published") {
+    html += `<div class="action-buttons" style="margin-top:var(--space-3)">
+      <button class="btn btn--primary btn--sm" type="button" id="revreq-approve">Setujui &amp; tarik untuk revisi</button>
+      <button class="btn btn--outline btn--sm" type="button" id="revreq-decline">Tolak permintaan</button>
+    </div>`;
+  }
+  box.innerHTML = html;
+
+  document.getElementById("revreq-approve")?.addEventListener("click", () => decideRevisionRequest(true));
+  document.getElementById("revreq-decline")?.addEventListener("click", () => decideRevisionRequest(false));
+}
+
+async function decideRevisionRequest(approve) {
+  if (busy) return;
+  if (approve && !confirm(SPECIAL_TRANSITION["published->needs_revision"].confirm)) return;
+
+  busy = true;
+  try {
+    const now = serverTimestamp();
+    const batch = writeBatch(db);
+    if (approve) {
+      batch.update(doc(db, "articles", articleId), {
+        status: "needs_revision",
+        editorNote: article.revisionRequest.reason || "",
+        "revisionRequest.status": "approved",
+        "revisionRequest.decidedAt": now,
+        "revisionRequest.decidedBy": user.uid,
+        updatedAt: now,
+      });
+      batch.set(doc(collection(db, "articles", articleId, "revisions")), {
+        fromStatus: "published", toStatus: "needs_revision", note: article.revisionRequest.reason || "",
+        byUid: user.uid, byName: profile.name || user.email, createdAt: now,
+      });
+    } else {
+      batch.update(doc(db, "articles", articleId), {
+        "revisionRequest.status": "declined",
+        "revisionRequest.decidedAt": now,
+        "revisionRequest.decidedBy": user.uid,
+      });
+    }
+    await batch.commit();
+    showToast(approve ? "Artikel ditarik untuk revisi." : "Permintaan ditolak.", "success");
+    await load();
+  } catch (err) {
+    console.error("[permintaan revisi]", err);
+    showToast(err.code === "permission-denied" ? "Tidak punya izin. Periksa Firestore Rules." : "Gagal menyimpan keputusan.", "error");
+  } finally {
+    busy = false;
+  }
 }
 
 async function renderHistory() {
@@ -150,6 +227,7 @@ async function load() {
   renderPreview();
   renderInfo();
   renderActions();
+  renderRevisionRequest();
   renderHistory();
 }
 
@@ -164,38 +242,7 @@ async function changeStatus(to) {
     noteEl?.focus();
     return;
   }
-  // --- MULAI KODE POP-UP KONFIRMASI CUSTOM ---
-  if (CONFIRM[to]) {
-    const isConfirmed = await new Promise((resolve) => {
-      const dialog = document.createElement("dialog");
-      dialog.className = "dialog";
-      dialog.innerHTML = `
-        <h2 class="dialog__title">Konfirmasi</h2>
-        <p>${escapeHtml(CONFIRM[to])}</p>
-        <div class="dialog__actions">
-          <button class="btn btn--outline" type="button" id="kustom-batal">Batal</button>
-          <button class="btn btn--primary" type="button" id="kustom-ya">Ya, Lanjutkan</button>
-        </div>
-      `;
-      document.body.appendChild(dialog);
-
-      const btnYes = dialog.querySelector("#kustom-ya");
-      const btnNo = dialog.querySelector("#kustom-batal");
-
-      const closeDialog = (result) => {
-        dialog.close();
-        document.body.removeChild(dialog); 
-        resolve(result);
-      };
-
-      btnYes.addEventListener("click", () => closeDialog(true));
-      btnNo.addEventListener("click", () => closeDialog(false));
-
-      dialog.showModal(); 
-    });
-
-    if (!isConfirmed) return; 
-  }
+  if (CONFIRM[to] && !confirm(CONFIRM[to])) return;
 
   busy = true;
   actionEl.querySelectorAll("button").forEach((b) => { b.disabled = true; });

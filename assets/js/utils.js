@@ -9,26 +9,18 @@ export const ROLE_LABEL = { editor: "Redaktur", journalist: "Jurnalis" };
 export function getParam(name) {
   return new URLSearchParams(location.search).get(name);
 }
-
-/**
- * Validasi alamat tujuan setelah login (?next=...).
- * Hanya boleh alamat internal DAN masih di area milik peran tersebut.
- * Mencegah open-redirect ke situs luar.
- */
 export function safeNextPath(raw, role) {
   if (!raw || !ROLE_AREA[role]) return null;
   if (!raw.startsWith("/") || raw.startsWith("//") || raw.includes("\\")) return null;
   return raw.startsWith(ROLE_AREA[role]) ? raw : null;
 }
 
-/** Cegah XSS: wajib dipakai sebelum memasukkan teks dari database ke innerHTML. */
 export function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
   }[c]));
 }
 
-/** "Warung Legendaris yang Masih Eksis!" -> "warung-legendaris-yang-masih-eksis" */
 export function slugify(text = "") {
   return text
     .toString()
@@ -92,6 +84,8 @@ export const STATUS_LABEL = {
   published: "Terbit",
   rejected: "Ditolak",
   archived: "Diarsipkan",
+  revision_requested: "Jurnalis minta revisi",
+  edited: "Diedit redaksi",
 };
 
 /** "needs_revision" -> "status status--needs-revision" (kelas CSS di components.css) */
@@ -106,7 +100,7 @@ export const DEFAULT_CATEGORIES = [
   { slug: "seni", name: "Seni" },
   { slug: "gaya-hidup", name: "Gaya Hidup" },
   { slug: "tokoh", name: "Tokoh" },
-  { slug: "opini", name: "Opini" },
+  { slug: "opini", name: "Editorial" },
 ];
 
 export function categoryName(slug) {
@@ -229,6 +223,9 @@ export function routeParam(queryName, pathPrefix) {
   return value ? decodeURIComponent(value) : null;
 }
 
+/* ---------- Tambahan Tahap 7 ---------- */
+
+/** Deskripsi kategori bawaan (dipakai saat mengisi kategori awal). */
 export const CATEGORY_DESCRIPTIONS = {
   budaya: "Cerita tentang budaya Indonesia yang hidup di tengah zaman.",
   tradisi: "Warisan dan kebiasaan turun-temurun yang masih dijaga.",

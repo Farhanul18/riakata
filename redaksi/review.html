@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Review Artikel — Riakata</title>
   <meta name="robots" content="noindex, nofollow">
-  <style>
-    html { background-color: #F6F1EA; }
-    html.auth-pending body { opacity: 0; pointer-events: none; }
-    body { opacity: 1; transition: opacity 0.3s ease; }
-  </style>
+  <style>html.auth-pending body{visibility:hidden}</style>
   <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +50,9 @@
       </article>
 
       <aside class="review-side" aria-label="Tindakan dan informasi">
+        <section class="box" id="revreq-box" aria-labelledby="judul-revreq" hidden style="border-color:var(--color-primary)">
+          <h2 class="box__title" id="judul-revreq">Permintaan revisi dari jurnalis</h2>
+        </section>
         <section class="box" id="action-box" aria-labelledby="judul-tindakan">
           <h2 class="box__title" id="judul-tindakan">Keputusan editor</h2>
           <div id="action-body"></div>
